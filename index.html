@@ -1543,8 +1543,7 @@ async function sendChat(){
   chatHistory.push({role:'user',content:txt});
   showTyping();
 
-  try {
-   
+    try {
     const res = await fetch('/.netlify/functions/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -1553,17 +1552,28 @@ async function sendChat(){
       })
     });
 
-    const data=await res.json();
+    const data = await res.json();
     removeTyping();
-    if(data.error){appendMsg('bot','API Error: '+data.error.message);return;}
-    const reply=data.candidates&&data.candidates[0]&&data.candidates[0].content&&data.candidates[0].content.parts&&data.candidates[0].content.parts[0]?data.candidates[0].content.parts[0].text:'No response from AI.';
-    appendMsg('bot',reply);
-    chatHistory.push({role:'assistant',content:reply});
-    if(chatHistory.length>16)chatHistory=chatHistory.slice(-16);
-  }catch(e){
+
+    // এরর চেক করার জন্য এই অংশটি বেশি কার্যকর
+    if (!res.ok || data.error) {
+      const errorMsg = data.error?.message || data.error || 'Server Error';
+      appendMsg('bot', 'API Error: ' + errorMsg);
+      return;
+    }
+
+    // AI এর উত্তর বের করে আনা
+    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'No response from AI.';
+    
+    appendMsg('bot', reply);
+    chatHistory.push({ role: 'assistant', content: reply });
+
+    if (chatHistory.length > 16) chatHistory = chatHistory.slice(-16);
+  } catch (e) {
     removeTyping();
-    appendMsg('bot','Error: '+e.message);
+    appendMsg('bot', 'Error: ' + e.message);
   }
+
 }
 window.sendChat=sendChat;
 
