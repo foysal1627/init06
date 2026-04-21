@@ -1544,7 +1544,7 @@ async function sendChat(){
   showTyping();
 
   try{
-    const GEMINI_KEY='AIzaSyCTvXj9u6fK8hLR2EYlTu1bY1if2GZjAc0';
+    const GEMINI_KEY='myapi';
     const res=await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key='+GEMINI_KEY,{
       method:'POST',
       headers:{'Content-Type':'application/json'},
