@@ -116,6 +116,8 @@ nav.scrolled{padding:10px 48px}
 }
 .nav-links a:hover{color:var(--cyan)}
 .nav-links a:hover::after{transform:scaleX(1)}
+.nav-links a[href="#arcade-quiz"]{color:var(--red);position:relative}
+.nav-links a[href="#arcade-quiz"]::after{background:var(--red)}
 .nav-right{display:flex;align-items:center;gap:16px}
 .theme-btn{
   width:36px;height:36px;border-radius:50%;border:1px solid var(--border);
@@ -193,7 +195,7 @@ nav.scrolled{padding:10px 48px}
   display:inline-flex;align-items:center;gap:8px;
   padding:13px 28px;background:var(--blue);color:var(--bg);
   font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;
-  border-radius:2px;border:none;cursor:none;
+  border-radius:7px;border:none;cursor:none;
   transition:background 0.2s,transform 0.2s,box-shadow 0.2s;
 }
 [data-theme="light"] .btn-primary{cursor:pointer}
@@ -215,7 +217,7 @@ nav.scrolled{padding:10px 48px}
 .scroll-hint span{font-family:var(--font-mono);font-size:0.58rem;color:var(--text-muted);letter-spacing:0.25em;text-transform:uppercase}
 .scroll-line{width:1px;height:44px;background:linear-gradient(to bottom,var(--cyan),transparent);animation:scrollPulse 2s infinite}
 
-     /*sectn */
+     /*section..................... */
 section{padding:100px 0;position:relative}
 .container{max-width:1160px;margin:0 auto;padding:0 48px}
 .section-label{
@@ -240,7 +242,7 @@ section{padding:100px 0;position:relative}
 
 
    
-/*statsbar */
+                   /*statsbar */
 
 #stats-bar{
   background:var(--surface);
@@ -398,104 +400,6 @@ section{padding:100px 0;position:relative}
 .ic-stat{margin-top:16px;font-family:var(--font-head);font-size:1.5rem;font-weight:900;color:var(--cc)}
 .ic-stl{font-family:var(--font-mono);font-size:0.58rem;color:var(--text-dim);letter-spacing:0.1em;text-transform:uppercase}
 
-/*qz */
-#quiz{background:var(--bg);overflow:hidden;position:relative}
-#quiz::before{
-  content:'';position:absolute;top:-150px;right:-150px;
-  width:500px;height:500px;border-radius:50%;
-  background:radial-gradient(circle,rgba(123,47,255,0.07) 0%,transparent 70%);
-  pointer-events:none
-}
-.quiz-wrap{
-  max-width:720px;margin:0 auto;
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:4px;padding:48px;
-  box-shadow:var(--card-shadow)
-}
-.quiz-header{text-align:center;margin-bottom:40px}
-.quiz-header .section-label{justify-content:center}
-.quiz-header .section-label::before{display:none}
-.quiz-meta{
-  font-family:var(--font-mono);font-size:0.65rem;color:var(--text-dim);
-  letter-spacing:0.15em;text-align:center;margin-bottom:32px
-}
-.quiz-progress-track{height:3px;background:var(--border);border-radius:3px;margin-bottom:32px;overflow:hidden}
-.quiz-progress-fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--blue),var(--cyan));border-radius:3px;transition:width 0.5s ease}
-.q-text{
-  font-family:var(--font-head);font-size:clamp(0.9rem,2vw,1.05rem);
-  font-weight:600;line-height:1.4;margin-bottom:28px;color:var(--text);
-}
-.q-options{display:flex;flex-direction:column;gap:10px}
-.q-opt{
-  display:flex;align-items:center;gap:14px;padding:14px 18px;
-  border:1px solid var(--border);background:transparent;
-  color:var(--text-dim);font-family:var(--font-body);font-size:0.9rem;
-  border-radius:3px;cursor:none;text-align:left;
-  transition:border-color 0.2s,background 0.2s,color 0.2s,transform 0.15s;
-  width:100%;
-}
-
-
-
-   
-[data-theme="light"] .q-opt{cursor:pointer}
-.q-opt:hover:not(:disabled){border-color:var(--blue);color:var(--text);transform:translateX(4px);background:var(--blue-faint)}
-.q-opt.correct{border-color:var(--green);background:rgba(46,213,115,0.1);color:var(--green)}
-.q-opt.wrong{border-color:var(--red);background:rgba(255,71,87,0.1);color:var(--red)}
-.q-opt:disabled{cursor:default}
-.opt-letter{
-  width:28px;height:28px;border-radius:50%;border:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--font-mono);font-size:0.65rem;flex-shrink:0;
-  transition:border-color 0.2s,background 0.2s;
-}
-.q-opt.correct .opt-letter{border-color:var(--green);background:rgba(46,213,115,0.2)}
-.q-opt.wrong .opt-letter{border-color:var(--red);background:rgba(255,71,87,0.15)}
-.q-feedback{
-  margin-top:16px;padding:14px 18px;border-radius:3px;
-  font-size:0.88rem;color:var(--text-dim);line-height:1.7;
-  display:none
-}
-.q-feedback.show{display:block}
-.q-feedback.correct-fb{background:rgba(46,213,115,0.08);border:1px solid rgba(46,213,115,0.2)}
-.q-feedback.wrong-fb{background:rgba(255,71,87,0.08);border:1px solid rgba(255,71,87,0.15)}
-.q-next{
-  margin-top:24px;padding:12px 28px;
-  background:var(--blue);color:var(--bg);
-  font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;
-  border:none;border-radius:2px;cursor:none;display:none;
-  transition:background 0.2s;
-}
-[data-theme="light"] .q-next{cursor:pointer}
-.q-next:hover{background:var(--cyan)}
-.q-next.show{display:inline-flex;align-items:center;gap:8px}
-/* Result */
-.quiz-result{display:none;text-align:center}
-.quiz-result.show{display:block}
-.result-circle{
-  width:120px;height:120px;border-radius:50%;
-  border:3px solid var(--blue);margin:0 auto 24px;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  box-shadow:0 0 40px rgba(0,168,255,0.2);
-}
-.result-score{font-family:var(--font-head);font-size:2rem;font-weight:900;color:var(--cyan)}
-.result-total{font-family:var(--font-mono);font-size:0.65rem;color:var(--text-dim)}
-.result-msg{font-size:1rem;color:var(--text);margin-bottom:12px;font-weight:600}
-.result-sub{font-size:0.88rem;color:var(--text-dim);margin-bottom:28px;max-width:380px;margin-left:auto;margin-right:auto}
-.result-badges{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:28px}
-.r-badge{
-  font-family:var(--font-mono);font-size:0.6rem;padding:6px 14px;
-  border-radius:2px;letter-spacing:0.1em;text-transform:uppercase;
-}
-.restart-btn{
-  padding:12px 28px;border:1px solid var(--border);background:transparent;
-  color:var(--text-dim);font-family:var(--font-mono);font-size:0.65rem;
-  letter-spacing:0.1em;text-transform:uppercase;border-radius:2px;cursor:none;
-  transition:border-color 0.2s,color 0.2s;
-}
-[data-theme="light"] .restart-btn{cursor:pointer}
-.restart-btn:hover{border-color:var(--blue);color:var(--blue)}
-
 /*cntr*/
 #controversy{background:var(--bg2);padding:0}
 .controversy-header{text-align:center;padding:90px 48px 56px}
@@ -578,7 +482,7 @@ section{padding:100px 0;position:relative}
 .closing p{color:var(--text-dim);max-width:440px;margin:0 auto 32px;font-size:0.9rem}
 .btn-grp{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 
-/*chtbt*/
+/*ai chatbot*/
 .chat-fab{
   position:fixed;bottom:28px;right:28px;z-index:800;
   width:56px;height:56px;border-radius:50%;
@@ -744,7 +648,6 @@ footer{
            .controversy-header{padding:72px 20px 40px}
   .balance-section{padding:40px 20px}
   footer{flex-direction:column;text-align:center;padding:28px 20px}
-  .quiz-wrap{padding:28px 20px}
   .chat-panel{bottom:88px;right:16px;width:calc(100vw - 32px)}
 }
 @media(max-width:540px){
@@ -756,10 +659,933 @@ footer{
   .htab:last-child{border-bottom:none}
   .hero-btns{flex-direction:column;align-items:center}
 }
+
+/* ============================================================
+   ONBOARDING OVERLAY
+============================================================ */
+#onboarding-overlay{
+  position:fixed;inset:0;z-index:10000;
+  background:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  padding:24px;
+  transition:opacity 0.6s ease,visibility 0.6s ease;
+  cursor:auto;
+  outline: none; 
+  -webkit-tap-highlight-color: transparent;
+}
+#onboarding-overlay *{cursor:pointer}
+#onboarding-overlay.hide{opacity:0;visibility:hidden;pointer-events:none}
+.ob-box{
+  max-width:520px;width:100%;text-align:center;
+}
+.ob-step{display:none}
+.ob-step.active{display:block;animation:fadeUp 0.5s ease forwards}
+.ob-eyebrow{
+  font-family:var(--font-mono);font-size:0.62rem;color:var(--cyan);
+  letter-spacing:0.3em;text-transform:uppercase;margin-bottom:20px;
+}
+.ob-title{
+  font-family:var(--font-head);font-size:clamp(1.5rem,4vw,2.4rem);
+  font-weight:900;line-height:1.1;margin-bottom:16px;
+}
+.ob-title .g{
+  background:linear-gradient(135deg,var(--blue),var(--cyan),var(--purple));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.ob-sub{font-size:0.9rem;color:var(--text-dim);margin-bottom:36px;line-height:1.8}
+.ob-choices{display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
+.ob-choice{
+  display:flex;align-items:center;gap:16px;
+  padding:16px 20px;border:1px solid var(--border);
+  background:transparent;border-radius:3px;
+  color:var(--text-dim);font-family:var(--font-body);font-size:0.92rem;
+  cursor:pointer!important;text-align:left;width:100%;
+  transition:border-color 0.2s,background 0.2s,color 0.2s,transform 0.15s;
+}
+.ob-choice:hover{border-color:var(--blue);color:var(--text);transform:translateX(6px);background:var(--blue-faint)}
+.ob-choice.selected{border-color:var(--cyan);background:rgba(0,255,247,0.07);color:var(--cyan)}
+.ob-choice-icon{font-size:1.3rem;flex-shrink:0;width:32px;text-align:center}
+.ob-choice-label{font-weight:600;display:block;margin-bottom:2px}
+.ob-choice-sub{font-size:0.78rem;color:var(--text-muted);font-family:var(--font-mono)}
+.ob-choice.selected .ob-choice-sub{color:var(--cyan);opacity:0.7}
+.ob-skip{
+  font-family:var(--font-mono);font-size:0.6rem;color:var(--text-muted);
+  letter-spacing:0.15em;text-transform:uppercase;background:none;border:none;
+  cursor:pointer!important;transition:color 0.2s;margin-top:8px;
+}
+.ob-skip:hover{color:var(--text-dim)}
+.ob-progress{display:flex;gap:8px;justify-content:center;margin-bottom:32px}
+.ob-dot{width:24px;height:2px;background:var(--border);border-radius:2px;transition:background 0.3s}
+.ob-dot.done{background:var(--blue)}
+.ob-dot.active{background:var(--cyan)}
+
+/* ============================================================
+   PARALLAX HERO
+============================================================ */
+.hero-parallax-layer{
+  position:absolute;inset:0;pointer-events:none;
+  will-change:transform;
+}
+#parallax-bg{z-index:0;opacity:0.4}
+#parallax-mid{z-index:1;opacity:0.6}
+.hero-content{z-index:3!important}
+
+/* ============================================================
+   LIVE AI PULSE STATS
+============================================================ */
+#ai-pulse{
+  background:var(--bg3);
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:0;overflow:hidden;position:relative;
+}
+#ai-pulse::before{
+  content:'LIVE';
+  position:absolute;left:48px;top:50%;transform:translateY(-50%);
+  font-family:var(--font-mono);font-size:0.55rem;color:var(--red);
+  letter-spacing:0.25em;
+  display:flex;align-items:center;gap:6px;
+}
+.pulse-header{
+  text-align:center;padding:14px 0 10px;
+  font-family:var(--font-mono);font-size:0.58rem;color:var(--text-muted);
+  letter-spacing:0.25em;text-transform:uppercase;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+}
+.pulse-live-dot{
+  width:7px;height:7px;border-radius:50%;background:var(--red);
+  animation:pulse 1.5s infinite;flex-shrink:0;
+}
+.pulse-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.pulse-item{
+  padding:28px 20px;text-align:center;
+  border-right:1px solid var(--border);
+  position:relative;overflow:hidden;
+}
+.pulse-item:last-child{border-right:none}
+.pulse-item::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 100%,var(--pi-color,var(--blue-faint)) 0%,transparent 70%);
+}
+.pulse-num{
+  font-family:var(--font-head);font-size:1.6rem;font-weight:900;
+  color:var(--pi-accent,var(--cyan));display:block;line-height:1;margin-bottom:6px;
+  font-variant-numeric:tabular-nums;
+  text-shadow:0 0 20px var(--pi-accent,rgba(0,255,247,0.4));
+}
+.pulse-lbl{font-family:var(--font-mono);font-size:0.56rem;color:var(--text-dim);letter-spacing:0.12em;text-transform:uppercase}
+.pulse-item:nth-child(1){--pi-accent:var(--cyan);--pi-color:rgba(0,255,247,0.04)}
+.pulse-item:nth-child(2){--pi-accent:var(--blue);--pi-color:rgba(0,168,255,0.06)}
+.pulse-item:nth-child(3){--pi-accent:var(--purple);--pi-color:rgba(123,47,255,0.06)}
+.pulse-item:nth-child(4){--pi-accent:var(--gold);--pi-color:rgba(255,209,102,0.05)}
+
+/* ============================================================
+   AI vs HUMAN COMPARISON
+============================================================ */
+#ai-vs-human{background:var(--bg2);position:relative;overflow:hidden}
+#ai-vs-human::before{
+  content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:1px;height:60%;background:linear-gradient(to bottom,transparent,var(--border),transparent);
+}
+.avh-header{text-align:center;margin-bottom:56px}
+.avh-header .section-label{justify-content:center}
+.avh-header .section-label::before{display:none}
+.avh-arena{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:2px;background:var(--border);border-radius:4px;overflow:hidden;
+  box-shadow:var(--card-shadow);
+}
+.avh-side{
+  background:var(--surface);padding:28px;
+  display:flex;flex-direction:column;gap:16px;
+}
+.avh-label{
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--font-head);font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;
+}
+.avh-label.human{color:var(--gold)}
+.avh-label.ai{color:var(--cyan)}
+.avh-label i{font-size:0.85rem}
+.avh-output{
+  flex:1;min-height:140px;font-size:0.85rem;line-height:1.85;color:var(--text-dim);
+  font-family:var(--font-mono);white-space:pre-wrap;word-break:break-word;
+  border:1px solid var(--border2);border-radius:3px;padding:16px;
+  background:var(--surface2);position:relative;overflow:hidden;
+}
+.avh-cursor{
+  display:inline-block;width:2px;height:1em;background:var(--cyan);
+  vertical-align:text-bottom;animation:blink 0.8s step-end infinite;margin-left:1px;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.avh-speed{
+  font-family:var(--font-mono);font-size:0.6rem;color:var(--text-muted);
+  letter-spacing:0.1em;text-transform:uppercase;display:flex;align-items:center;gap:6px;
+}
+.avh-speed i{font-size:0.65rem}
+.avh-controls{
+  display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px;justify-content:center;
+}
+.avh-task-btn{
+  padding:8px 16px;border:1px solid var(--border);background:transparent;
+  color:var(--text-dim);font-family:var(--font-mono);font-size:0.62rem;
+  letter-spacing:0.08em;text-transform:uppercase;border-radius:2px;cursor:pointer!important;
+  transition:all 0.2s;
+}
+.avh-task-btn:hover,.avh-task-btn.active{border-color:var(--cyan);color:var(--cyan);background:rgba(0,255,247,0.06)}
+.avh-run-btn{
+  padding:10px 28px;background:linear-gradient(135deg,var(--purple),var(--blue));
+  border:none;color:#fff;font-family:var(--font-mono);font-size:0.65rem;
+  letter-spacing:0.12em;text-transform:uppercase;border-radius:2px;cursor:pointer!important;
+  transition:opacity 0.2s,transform 0.15s;display:flex;align-items:center;gap:8px;
+}
+.avh-run-btn:hover{opacity:0.85;transform:translateY(-1px)}
+
+/* ============================================================
+   QUOTE SHARE CARDS
+============================================================ */
+.tl-share-btn{
+  position:absolute;top:10px;right:10px;
+  width:34px;height:34px;border-radius:6px;
+  background:rgba(0,168,255,0.12);border:1px solid rgba(0,168,255,0.3);
+  color:var(--blue);cursor:pointer!important;
+  display:flex;align-items:center;justify-content:center;font-size:0.75rem;
+  opacity:0.45;transition:opacity 0.2s,border-color 0.2s,color 0.2s,background 0.2s,transform 0.15s;
+  z-index:2;
+}
+.tl-card:hover .tl-share-btn{opacity:1;transform:scale(1.08)}
+.tl-share-btn:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(0,255,247,0.12)}
+#share-toast{
+  position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(20px);
+  background:var(--surface);border:1px solid var(--green);
+  border-radius:3px;padding:12px 20px;
+  font-family:var(--font-mono);font-size:0.7rem;color:var(--green);
+  letter-spacing:0.1em;z-index:7000;
+  opacity:0;transition:opacity 0.3s,transform 0.3s;pointer-events:none;
+}
+#share-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ============================================================
+   EASTER EGG
+============================================================ */
+#easter-egg-overlay{
+  position:fixed;inset:0;z-index:9990;
+  background:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity 0.4s,visibility 0.4s;
+  flex-direction:column;gap:16px;
+}
+#easter-egg-overlay.show{opacity:1;visibility:visible;pointer-events:all}
+#matrix-canvas{position:absolute;inset:0}
+.ee-text{
+  position:relative;z-index:2;text-align:center;
+  font-family:var(--font-head);font-size:clamp(1.5rem,4vw,2.8rem);
+  font-weight:900;color:var(--green);
+  text-shadow:0 0 30px rgba(46,213,115,0.6);
+  animation:fadeUp 0.8s ease forwards;
+}
+.ee-sub{
+  position:relative;z-index:2;
+  font-family:var(--font-mono);font-size:0.75rem;color:rgba(46,213,115,0.7);
+  letter-spacing:0.2em;text-transform:uppercase;
+  animation:fadeUp 0.8s 0.2s ease both;
+}
+.ee-close{
+  position:relative;z-index:2;margin-top:8px;
+  padding:10px 24px;border:1px solid rgba(46,213,115,0.4);
+  background:transparent;color:var(--green);
+  font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.15em;
+  text-transform:uppercase;border-radius:2px;cursor:pointer!important;
+  transition:background 0.2s;
+  animation:fadeUp 0.8s 0.4s ease both;
+}
+.ee-close:hover{background:rgba(46,213,115,0.1)}
+
+/* ============================================================
+   DEV NOTE BUTTON & MODAL
+============================================================ */
+.dev-note-btn{
+  font-family:var(--font-mono);font-size:0.62rem;color:var(--text-dim);
+  letter-spacing:0.1em;text-transform:uppercase;
+  background:none;border:1px solid var(--border);
+  padding:5px 12px;border-radius:2px;cursor:pointer!important;
+  display:flex;align-items:center;gap:7px;
+  transition:color 0.2s,border-color 0.2s,background 0.2s,box-shadow 0.2s;
+  white-space:nowrap;
+}
+.dev-note-btn:hover{color:var(--purple);border-color:var(--purple);background:rgba(123,47,255,0.08);box-shadow:0 0 12px rgba(123,47,255,0.2)}
+.devnote-overlay{
+  position:fixed;inset:0;z-index:5000;background:rgba(2,4,8,0);
+  backdrop-filter:blur(0px);-webkit-backdrop-filter:blur(0px);
+  display:flex;align-items:center;justify-content:center;padding:24px;
+  pointer-events:none;transition:background 0.4s ease,backdrop-filter 0.4s ease;
+  cursor:auto;
+}
+.devnote-overlay.active{background:rgba(2,4,8,0.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);pointer-events:all}
+[data-theme="light"] .devnote-overlay.active{background:rgba(10,22,40,0.55)}
+.devnote-box{
+  background:var(--surface);border:1px solid rgba(123,47,255,0.35);
+  border-radius:4px;max-width:560px;width:100%;
+  max-height:calc(100dvh - 48px);
+  display:flex;flex-direction:column;
+  position:relative;overflow:hidden;
+  box-shadow:0 0 60px rgba(123,47,255,0.18),0 0 120px rgba(0,168,255,0.08),var(--card-shadow);
+  opacity:0;transform:translateY(32px) scale(0.96);
+  transition:opacity 0.45s cubic-bezier(0.16,1,0.3,1),transform 0.45s cubic-bezier(0.16,1,0.3,1);
+}
+.devnote-overlay.active .devnote-box{opacity:1;transform:translateY(0) scale(1)}
+.devnote-topbar{height:3px;background:linear-gradient(90deg,var(--purple),var(--blue),var(--cyan));flex-shrink:0}
+.devnote-header{padding:20px 24px 16px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;border-bottom:1px solid var(--border2);flex-shrink:0}
+.devnote-title-wrap{display:flex;align-items:center;gap:12px}
+.devnote-icon{width:36px;height:36px;border-radius:50%;background:rgba(123,47,255,0.12);border:1px solid rgba(123,47,255,0.3);display:flex;align-items:center;justify-content:center;font-size:0.85rem;color:var(--purple);flex-shrink:0}
+.devnote-title{font-family:var(--font-head);font-size:0.78rem;font-weight:700;color:var(--text);letter-spacing:0.12em;text-transform:uppercase}
+.devnote-subtitle{font-family:var(--font-mono);font-size:0.58rem;color:var(--text-muted);letter-spacing:0.12em;margin-top:3px}
+.devnote-close{width:32px;height:32px;border-radius:50%;background:transparent;border:1px solid var(--border);color:var(--text-dim);cursor:pointer!important;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:0.8rem;transition:border-color 0.2s,color 0.2s,background 0.2s}
+.devnote-close:hover{border-color:var(--red);color:var(--red);background:rgba(255,71,87,0.08)}
+.devnote-body{padding:20px 24px;display:flex;flex-direction:column;gap:14px;overflow-y:auto;flex:1;overscroll-behavior:contain}
+.devnote-body::-webkit-scrollbar{width:3px}
+.devnote-body::-webkit-scrollbar-thumb{background:rgba(123,47,255,0.3);border-radius:3px}
+.dn-block{background:var(--surface2);border:1px solid var(--border2);border-radius:3px;padding:14px 16px;position:relative;overflow:hidden}
+.dn-block::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--dn-accent,var(--blue))}
+.dn-block-head{display:flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:0.6rem;color:var(--dn-accent,var(--blue));letter-spacing:0.15em;text-transform:uppercase;margin-bottom:9px;font-weight:600}
+.dn-block p{font-size:0.83rem;color:var(--text-dim);line-height:1.8}
+.dn-block ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+.dn-block ul li{font-size:0.82rem;color:var(--text-dim);line-height:1.75;display:flex;align-items:flex-start;gap:8px}
+.dn-block ul li i{color:var(--dn-accent,var(--blue));font-size:0.65rem;margin-top:4px;flex-shrink:0}
+.dn-block.arch{--dn-accent:var(--blue)}.dn-block.ai{--dn-accent:var(--purple)}.dn-block.warn{--dn-accent:var(--gold)}
+.dn-tip{display:flex;align-items:flex-start;gap:10px;background:rgba(46,213,115,0.06);border:1px solid rgba(46,213,115,0.18);border-radius:3px;padding:13px 16px;font-size:0.81rem;color:var(--text-dim);line-height:1.75}
+.dn-tip i{color:var(--green);font-size:0.8rem;margin-top:3px;flex-shrink:0}
+.devnote-footer{padding:12px 24px 16px;display:flex;justify-content:flex-end;border-top:1px solid var(--border2);flex-shrink:0}
+.dn-close-btn{display:inline-flex;align-items:center;gap:7px;padding:9px 20px;background:rgba(123,47,255,0.12);border:1px solid rgba(123,47,255,0.3);border-radius:2px;color:var(--purple);font-family:var(--font-mono);font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer!important;transition:background 0.2s,border-color 0.2s,box-shadow 0.2s}
+.dn-close-btn:hover{background:rgba(123,47,255,0.22);border-color:var(--purple);box-shadow:0 0 16px rgba(123,47,255,0.25)}
+
+@media(max-width:860px){
+  .pulse-grid{grid-template-columns:repeat(2,1fr)}
+  .pulse-item:nth-child(2){border-right:none}
+  .pulse-item:nth-child(1),.pulse-item:nth-child(2){border-bottom:1px solid var(--border)}
+  .avh-arena{grid-template-columns:1fr}
+  #ai-vs-human::before{display:none}
+  .dev-note-btn span{display:none}
+  .devnote-overlay{padding:12px}
+  .devnote-box{max-height:calc(100dvh - 24px)}
+  .devnote-header{padding:16px 16px 14px}
+  .devnote-body{padding:16px}
+  .devnote-footer{padding:10px 16px 14px}
+  .ob-box{max-width:100%}
+  .ob-choice{padding:12px 14px}
+}/* ============================================================
+   GLITCH DECODE — section text reveal
+============================================================ */
+.glitch-text{
+  display:inline;
+  transition:color 0.15s;
+}
+.glitch-text.decoding{
+  color:var(--cyan);
+  text-shadow:0 0 8px rgba(0,255,247,0.5);
+}
+
+/* ============================================================
+   SECTION TRANSITION GLITCH
+============================================================ */
+@keyframes sectionGlitch{
+  0%  {clip-path:inset(0 0 100% 0);opacity:0}
+  15% {clip-path:inset(30% 0 40% 0);opacity:0.7;filter:hue-rotate(90deg)}
+  30% {clip-path:inset(60% 0 10% 0);opacity:0.5;filter:hue-rotate(180deg)}
+  50% {clip-path:inset(0 0 0% 0);opacity:0.9;filter:none}
+  70% {clip-path:inset(0 0 0 0);opacity:1;filter:none}
+  100%{clip-path:none;opacity:1;filter:none}
+}
+.section-glitch-enter{
+  animation:sectionGlitch 0.55s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+/* scanline overlay that flashes */
+#section-scanline{
+  position:fixed;inset:0;z-index:700;pointer-events:none;
+  background:repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,255,247,0.015) 2px,
+    rgba(0,255,247,0.015) 4px
+  );
+  opacity:0;transition:opacity 0.1s;
+}
+#section-scanline.flash{opacity:1}
+
+
+/* ============================================================
+   YOU vs GPT-4
+============================================================ */
+#you-vs-gpt{background:var(--bg);position:relative;overflow:hidden}
+#you-vs-gpt::before{
+  content:'';position:absolute;bottom:-200px;left:50%;transform:translateX(-50%);
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(0,168,255,0.05) 0%,transparent 70%);
+  pointer-events:none;
+}
+.yvg-header{text-align:center;margin-bottom:48px}
+.yvg-header .section-label{justify-content:center}
+.yvg-header .section-label::before{display:none}
+.yvg-arena{
+  max-width:760px;margin:0 auto;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:4px;overflow:hidden;box-shadow:var(--card-shadow);
+}
+.yvg-passage{
+  padding:32px 36px;
+  font-size:1rem;color:var(--text);line-height:1.9;
+  border-bottom:1px solid var(--border);
+  position:relative;
+}
+.yvg-passage p{font-size:0.95rem;line-height:1.9}
+.yvg-passage-label{
+  font-family:var(--font-mono);font-size:0.58rem;color:var(--text-muted);
+  letter-spacing:0.2em;text-transform:uppercase;margin-bottom:14px;
+  display:flex;align-items:center;gap:8px;
+}
+.yvg-highlight{
+  background:rgba(0,168,255,0.12);
+  border-bottom:1px solid rgba(0,168,255,0.4);
+  transition:background 0.3s;
+}
+.yvg-controls{
+  padding:20px 36px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  border-bottom:1px solid var(--border);
+}
+.yvg-start-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 24px;background:var(--blue);color:var(--bg);
+  font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;
+  border:none;border-radius:2px;cursor:pointer!important;
+  transition:background 0.2s,transform 0.15s;
+}
+.yvg-start-btn:hover{background:var(--cyan);transform:translateY(-1px)}
+.yvg-done-btn{
+  display:none;align-items:center;gap:8px;
+  padding:10px 24px;background:var(--green);color:var(--bg);
+  font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;
+  border:none;border-radius:2px;cursor:pointer!important;
+  transition:background 0.2s;
+}
+.yvg-done-btn.show{display:inline-flex}
+.yvg-timer-display{
+  font-family:var(--font-head);font-size:1.4rem;font-weight:900;
+  color:var(--cyan);min-width:60px;
+  font-variant-numeric:tabular-nums;
+}
+.yvg-timer-label{font-family:var(--font-mono);font-size:0.6rem;color:var(--text-muted);letter-spacing:0.1em}
+.yvg-results{
+  padding:28px 36px;display:none;
+}
+.yvg-results.show{display:block;animation:fadeUp 0.5s ease forwards}
+.yvg-vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+.yvg-stat-box{
+  background:var(--surface2);border:1px solid var(--border2);
+  border-radius:3px;padding:20px;text-align:center;position:relative;overflow:hidden;
+}
+.yvg-stat-box::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--vsb-color,var(--blue));
+}
+.yvg-stat-box.you{--vsb-color:var(--gold)}
+.yvg-stat-box.gpt{--vsb-color:var(--cyan)}
+.yvg-stat-who{font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--vsb-color,var(--blue));margin-bottom:8px}
+.yvg-stat-val{font-family:var(--font-head);font-size:1.8rem;font-weight:900;color:var(--text);line-height:1}
+.yvg-stat-sub{font-family:var(--font-mono);font-size:0.6rem;color:var(--text-muted);margin-top:4px}
+.yvg-insight{
+  background:rgba(0,168,255,0.05);border:1px solid var(--border);
+  border-radius:3px;padding:18px 20px;
+  font-size:0.88rem;color:var(--text-dim);line-height:1.75;
+  display:flex;gap:12px;align-items:flex-start;
+}
+.yvg-insight i{color:var(--blue);font-size:0.9rem;margin-top:2px;flex-shrink:0}
+.yvg-retry{
+  margin-top:16px;display:flex;justify-content:center;
+}
+.yvg-retry-btn{
+  padding:9px 22px;border:1px solid var(--border);background:transparent;
+  color:var(--text-dim);font-family:var(--font-mono);font-size:0.62rem;
+  letter-spacing:0.1em;text-transform:uppercase;border-radius:2px;cursor:pointer!important;
+  transition:border-color 0.2s,color 0.2s;
+}
+.yvg-retry-btn:hover{border-color:var(--blue);color:var(--blue)}
+@media(max-width:600px){
+  .yvg-passage{padding:20px}
+  .yvg-controls{padding:14px 20px}
+  .yvg-results{padding:20px}
+  .yvg-vs-grid{grid-template-columns:1fr}
+}
+
+/* ============================================================
+   PREDICT THE FUTURE
+============================================================ */
+#predict-future{background:var(--bg2);position:relative;overflow:hidden}
+.ptf-header{text-align:center;margin-bottom:48px}
+.ptf-header .section-label{justify-content:center}
+.ptf-header .section-label::before{display:none}
+.ptf-wrap{max-width:780px;margin:0 auto}
+.ptf-timeline{
+  position:relative;height:80px;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:3px;margin-bottom:28px;overflow:visible;
+}
+.ptf-track{
+  position:absolute;top:50%;left:48px;right:48px;height:2px;
+  background:linear-gradient(90deg,var(--blue-dim),var(--blue),var(--cyan));
+  transform:translateY(-50%);
+}
+.ptf-year-labels{
+  position:absolute;top:50%;left:48px;right:48px;
+  transform:translateY(16px);
+  display:flex;justify-content:space-between;
+  font-family:var(--font-mono);font-size:0.55rem;color:var(--text-muted);
+  letter-spacing:0.08em;
+}
+.ptf-anchor{
+  position:absolute;top:50%;transform:translate(-50%,-50%);
+  width:10px;height:10px;border-radius:50%;
+  background:var(--blue);border:2px solid var(--bg);
+  box-shadow:0 0 8px var(--glow);
+  z-index:2;
+}
+.ptf-anchor-label{
+  position:absolute;top:50%;transform:translateY(-28px);
+  font-family:var(--font-mono);font-size:0.55rem;color:var(--blue);
+  white-space:nowrap;text-align:center;
+  left:50%;transform:translate(-50%,-28px);
+}
+.ptf-user-dot{
+  position:absolute;top:50%;
+  width:14px;height:14px;border-radius:50%;
+  background:var(--gold);border:2px solid var(--bg);
+  box-shadow:0 0 12px rgba(255,209,102,0.6);
+  transform:translate(-50%,-50%);z-index:3;
+  transition:left 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  cursor:ew-resize!important;
+  display:none;
+}
+.ptf-user-dot-label{
+  position:absolute;top:-26px;left:50%;transform:translateX(-50%);
+  font-family:var(--font-head);font-size:0.6rem;color:var(--gold);
+  white-space:nowrap;background:var(--bg);padding:2px 6px;
+  border:1px solid rgba(255,209,102,0.3);border-radius:2px;
+}
+.ptf-input-row{
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:20px;
+}
+.ptf-label{font-family:var(--font-mono);font-size:0.7rem;color:var(--text-dim);letter-spacing:0.08em;white-space:nowrap}
+.ptf-slider{
+  flex:1;min-width:200px;
+  -webkit-appearance:none;appearance:none;
+  height:3px;background:linear-gradient(90deg,var(--blue-dim),var(--cyan));
+  border-radius:2px;outline:none;cursor:pointer!important;
+}
+.ptf-slider::-webkit-slider-thumb{
+  -webkit-appearance:none;appearance:none;
+  width:18px;height:18px;border-radius:50%;
+  background:var(--gold);border:2px solid var(--bg);
+  box-shadow:0 0 10px rgba(255,209,102,0.5);cursor:ew-resize!important;
+}
+.ptf-slider::-moz-range-thumb{
+  width:18px;height:18px;border-radius:50%;
+  background:var(--gold);border:2px solid var(--bg);
+  box-shadow:0 0 10px rgba(255,209,102,0.5);cursor:ew-resize!important;
+}
+.ptf-year-val{
+  font-family:var(--font-head);font-size:1.1rem;font-weight:900;
+  color:var(--gold);min-width:44px;
+}
+.ptf-submit-btn{
+  padding:10px 24px;background:linear-gradient(135deg,var(--purple),var(--blue));
+  border:none;color:#fff;font-family:var(--font-mono);font-size:0.65rem;
+  letter-spacing:0.12em;text-transform:uppercase;border-radius:2px;cursor:pointer!important;
+  transition:opacity 0.2s,transform 0.15s;
+}
+.ptf-submit-btn:hover{opacity:0.85;transform:translateY(-1px)}
+.ptf-result{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:3px;padding:20px 24px;
+  display:none;animation:fadeUp 0.4s ease forwards;
+}
+.ptf-result.show{display:block}
+.ptf-result-top{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.ptf-result-icon{
+  width:42px;height:42px;border-radius:50%;
+  background:rgba(255,209,102,0.1);border:1px solid rgba(255,209,102,0.3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;color:var(--gold);flex-shrink:0;
+}
+.ptf-result-text{font-size:0.88rem;color:var(--text-dim);line-height:1.75}
+.ptf-result-text strong{color:var(--gold)}
+.ptf-agree-bar-wrap{margin-top:14px}
+.ptf-agree-label{font-family:var(--font-mono);font-size:0.58rem;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;display:flex;justify-content:space-between}
+.ptf-agree-track{height:4px;background:var(--border);border-radius:3px;overflow:hidden}
+.ptf-agree-fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--gold));border-radius:3px;width:0%;transition:width 1.2s cubic-bezier(0.22,1,0.36,1)}
+@media(max-width:600px){
+  .ptf-input-row{flex-direction:column;align-items:flex-start}
+  .ptf-slider{width:100%}
+}
+
+/* ============================================================
+   TURING TEST GAME
+============================================================ */
+#turing-game{background:var(--bg2);position:relative;overflow:hidden}
+#turing-game::before{
+  content:'';position:absolute;top:-150px;right:-150px;
+  width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle,rgba(46,213,115,0.05) 0%,transparent 70%);
+  pointer-events:none;
+}
+.tg-header{text-align:center;margin-bottom:48px}
+.tg-header .section-label{justify-content:center}
+.tg-header .section-label::before{display:none}
+.tg-header .section-desc{margin:0 auto}
+.tg-arena{max-width:820px;margin:0 auto}
+.tg-round-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--font-mono);font-size:0.6rem;color:var(--text-muted);
+  letter-spacing:0.2em;text-transform:uppercase;
+  background:var(--surface);border:1px solid var(--border);
+  padding:6px 16px;border-radius:2px;margin-bottom:20px;
+}
+.tg-round-badge .tg-live{color:var(--green)}
+.tg-conversation{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:4px;overflow:hidden;margin-bottom:20px;
+  box-shadow:var(--card-shadow);
+}
+.tg-convo-header{
+  padding:14px 24px;background:var(--surface2);border-bottom:1px solid var(--border);
+  font-family:var(--font-mono);font-size:0.6rem;color:var(--text-muted);
+  letter-spacing:0.2em;text-transform:uppercase;display:flex;align-items:center;gap:10px;
+}
+.tg-convo-header i{color:var(--cyan)}
+.tg-messages{padding:24px;display:flex;flex-direction:column;gap:16px}
+.tg-msg{display:flex;gap:14px;align-items:flex-start}
+.tg-msg-avatar{
+  width:36px;height:36px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:0.9rem;
+  border:1px solid var(--border);
+}
+.tg-msg-avatar.a{background:rgba(0,168,255,0.1);color:var(--blue)}
+.tg-msg-avatar.b{background:rgba(123,47,255,0.1);color:var(--purple)}
+.tg-msg-bubble{
+  flex:1;background:var(--surface2);border:1px solid var(--border2);
+  border-radius:3px;padding:14px 16px;
+}
+.tg-msg-label{
+  font-family:var(--font-mono);font-size:0.58rem;color:var(--text-muted);
+  letter-spacing:0.12em;text-transform:uppercase;margin-bottom:6px;
+}
+.tg-msg-text{font-size:0.9rem;color:var(--text-dim);line-height:1.75}
+.tg-prompt-box{
+  background:rgba(0,168,255,0.04);border:1px solid var(--border);
+  border-radius:3px;padding:14px 20px;margin-bottom:20px;
+  font-size:0.88rem;color:var(--text-dim);line-height:1.7;
+  display:flex;gap:12px;align-items:flex-start;
+}
+.tg-prompt-box i{color:var(--blue);flex-shrink:0;margin-top:2px}
+.tg-choice-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.tg-choice-btn{
+  padding:16px 20px;background:transparent;border:1px solid var(--border);
+  border-radius:3px;color:var(--text-dim);font-family:var(--font-body);font-size:0.88rem;
+  cursor:pointer!important;text-align:center;transition:all 0.2s;position:relative;overflow:hidden;
+}
+.tg-choice-btn:hover{border-color:var(--blue);color:var(--text);background:var(--blue-faint);transform:translateY(-2px)}
+.tg-choice-btn .tg-label{font-weight:600;display:block;margin-bottom:4px;font-size:0.92rem}
+.tg-choice-btn .tg-sub{font-family:var(--font-mono);font-size:0.62rem;color:var(--text-muted);display:block}
+.tg-choice-btn.correct{border-color:var(--green);background:rgba(46,213,115,0.08);color:var(--green)}
+.tg-choice-btn.wrong{border-color:var(--red);background:rgba(255,71,87,0.08);color:var(--red)}
+.tg-result-reveal{
+  padding:20px 24px;background:var(--surface);border:1px solid var(--border);
+  border-radius:3px;display:none;animation:fadeUp 0.4s ease forwards;
+}
+.tg-result-reveal.show{display:block}
+.tg-result-top{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+.tg-result-icon{
+  width:44px;height:44px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem;
+}
+.tg-result-icon.win{background:rgba(46,213,115,0.12);border:1px solid rgba(46,213,115,0.3);color:var(--green)}
+.tg-result-icon.lose{background:rgba(255,71,87,0.1);border:1px solid rgba(255,71,87,0.3);color:var(--red)}
+.tg-result-body{font-size:0.88rem;color:var(--text-dim);line-height:1.75}
+.tg-result-body strong{color:var(--text)}
+.tg-score-row{display:flex;align-items:center;gap:8px;margin-top:12px}
+.tg-score-pip{width:12px;height:12px;border-radius:50%;background:var(--border)}
+.tg-score-pip.hit{background:var(--green)}
+.tg-score-pip.miss{background:var(--red)}
+.tg-next-btn{
+  margin-top:16px;padding:10px 24px;
+  background:linear-gradient(135deg,var(--blue),var(--cyan));border:none;
+  color:var(--bg);font-family:var(--font-mono);font-size:0.65rem;
+  letter-spacing:0.12em;text-transform:uppercase;border-radius:2px;
+  cursor:pointer!important;transition:opacity 0.2s,transform 0.15s;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.tg-next-btn:hover{opacity:0.85;transform:translateY(-1px)}
+.tg-final-box{
+  background:var(--surface);border:1px solid var(--border);border-radius:4px;
+  padding:40px 32px;text-align:center;display:none;animation:fadeUp 0.5s forwards;
+}
+.tg-final-box.show{display:block}
+.tg-final-score{
+  font-family:var(--font-head);font-size:3.5rem;font-weight:900;
+  background:linear-gradient(135deg,var(--green),var(--cyan));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  line-height:1;margin-bottom:8px;
+}
+.tg-final-label{font-family:var(--font-mono);font-size:0.65rem;color:var(--text-muted);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:20px}
+.tg-final-msg{font-size:0.95rem;color:var(--text-dim);max-width:500px;margin:0 auto 24px;line-height:1.8}
+.tg-replay-btn{
+  padding:11px 28px;border:1px solid var(--border);background:transparent;
+  color:var(--text-dim);font-family:var(--font-mono);font-size:0.65rem;
+  letter-spacing:0.12em;text-transform:uppercase;border-radius:2px;
+  cursor:pointer!important;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;
+}
+.tg-replay-btn:hover{border-color:var(--blue);color:var(--blue)}
+@media(max-width:600px){.tg-choice-row{grid-template-columns:1fr}}
+
+
+/* ============================================================
+   ARCADE QUIZ (Speed Round)
+============================================================ */
+#arcade-quiz{background:var(--bg2);position:relative;overflow:hidden}
+#arcade-quiz::before{
+  content:'';position:absolute;top:-100px;right:-100px;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,71,87,0.04) 0%,transparent 65%);
+  pointer-events:none;
+}
+.aq-header{text-align:center;margin-bottom:48px}
+.aq-header .section-label{justify-content:center}
+.aq-header .section-label::before{display:none}
+.aq-header .section-desc{margin:0 auto}
+.aq-wrap{max-width:760px;margin:0 auto}
+/* Intro */
+.aq-intro{text-align:center;padding:40px}
+.aq-intro-icon{font-size:4rem;margin-bottom:20px;animation:floatIcon 3s ease-in-out infinite}
+@keyframes floatIcon{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.aq-intro h3{font-family:var(--font-head);font-size:1.4rem;color:var(--text);margin-bottom:12px}
+.aq-intro p{color:var(--text-dim);font-size:0.9rem;line-height:1.8;margin-bottom:28px;max-width:500px;margin-left:auto;margin-right:auto}
+.aq-rules{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.aq-rule{
+  display:flex;align-items:center;gap:8px;
+  font-family:var(--font-mono);font-size:0.62rem;color:var(--text-dim);
+  background:var(--surface);border:1px solid var(--border);
+  padding:8px 16px;border-radius:2px;letter-spacing:0.08em;
+}
+.aq-rule i{color:var(--cyan);font-size:0.75rem}
+.aq-start-btn{
+  padding:14px 40px;background:linear-gradient(135deg,var(--blue-dim),var(--purple));
+  border:none;color:#fff;font-family:var(--font-head);font-size:0.85rem;
+  letter-spacing:0.15em;text-transform:uppercase;border-radius:10px;
+  cursor:pointer!important;transition:opacity 0.2s,transform 0.2s;
+  display:inline-flex;align-items:center;gap:10px;
+  box-shadow:0 8px 32px rgba(110, 131, 247, 0.3);
+}
+.aq-start-btn:hover{opacity:0.88;transform:translateY(-2px)}
+/* Game */
+.aq-game{display:none}
+.aq-game.active{display:block}
+/* HUD */
+.aq-hud{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:20px;flex-wrap:wrap;gap:12px;
+}
+.aq-hud-left{display:flex;align-items:center;gap:16px}
+.aq-timer-wrap{position:relative;width:56px;height:56px}
+.aq-timer-svg{position:absolute;inset:0;transform:rotate(-90deg)}
+.aq-timer-bg{fill:none;stroke:var(--surface2);stroke-width:4}
+.aq-timer-fg{fill:none;stroke:var(--red);stroke-width:4;stroke-linecap:round;
+  stroke-dasharray:138.23;stroke-dashoffset:0;transition:stroke-dashoffset 0.1s linear,stroke 0.3s}
+.aq-timer-num{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-head);font-size:1rem;font-weight:900;color:var(--red);
+  transition:color 0.3s;
+}
+.aq-streak{
+  font-family:var(--font-mono);font-size:0.6rem;color:var(--text-muted);letter-spacing:0.1em;
+  background:var(--surface);border:1px solid var(--border);
+  padding:4px 12px;border-radius:2px;
+}
+.aq-streak.hot{border-color:var(--gold);color:var(--gold);background:rgba(255,209,102,0.08)}
+.aq-streak.fire{border-color:var(--red);color:var(--red);background:rgba(255,71,87,0.1);animation:streakPulse 0.5s ease}
+@keyframes streakPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+.aq-score-display{
+  font-family:var(--font-head);font-size:1.4rem;font-weight:900;color:var(--cyan);
+  text-shadow:0 0 20px rgba(0,255,247,0.4);
+}
+.aq-score-label{font-family:var(--font-mono);font-size:0.52rem;color:var(--text-muted);letter-spacing:0.1em}
+.aq-qnum{font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);letter-spacing:0.1em}
+/* Progress */
+.aq-progress-track{height:3px;background:var(--border);border-radius:2px;margin-bottom:20px;overflow:hidden}
+.aq-progress-fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--cyan));border-radius:2px;transition:width 0.3s ease}
+/* Question */
+.aq-qbox{
+  background:var(--surface);border:1px solid var(--border);border-radius:4px;
+  padding:28px;margin-bottom:20px;position:relative;overflow:hidden;
+  box-shadow:var(--card-shadow);
+}
+.aq-qbox::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--red),var(--purple))}
+.aq-category{
+  font-family:var(--font-mono);font-size:0.56rem;color:var(--text-muted);
+  letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px;
+}
+.aq-qtext{font-family:var(--font-body);font-size:1.05rem;color:var(--text);line-height:1.65;font-weight:600}
+/* Options */
+.aq-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.aq-opt{
+  padding:14px 18px;background:transparent;border:1px solid var(--border);
+  border-radius:3px;color:var(--text-dim);font-family:var(--font-body);font-size:0.88rem;
+  cursor:pointer!important;text-align:left;transition:all 0.15s;
+  display:flex;align-items:center;gap:10px;
+  -webkit-tap-highlight-color:transparent;
+}
+.aq-opt-key{
+  width:22px;height:22px;border-radius:4px;flex-shrink:0;
+  background:var(--surface2);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-mono);font-size:0.6rem;color:var(--text-muted);
+  transition:background 0.15s,color 0.15s;
+}
+.aq-opt:hover:not(:disabled){border-color:var(--blue);color:var(--text);background:var(--blue-faint)}
+.aq-opt:hover:not(:disabled) .aq-opt-key{background:var(--blue);color:var(--bg);border-color:var(--blue)}
+.aq-opt.correct{border-color:var(--green);background:rgba(46,213,115,0.1);color:var(--green)}
+.aq-opt.correct .aq-opt-key{background:var(--green);color:var(--bg);border-color:var(--green)}
+.aq-opt.wrong{border-color:var(--red);background:rgba(255,71,87,0.08);color:var(--red)}
+.aq-opt.wrong .aq-opt-key{background:var(--red);color:#fff;border-color:var(--red)}
+.aq-opt:disabled{cursor:default!important;opacity:0.7}
+/* Feedback */
+.aq-fb{
+  font-family:var(--font-mono);font-size:0.7rem;color:var(--text-muted);
+  letter-spacing:0.06em;line-height:1.7;min-height:24px;
+  padding:10px 16px;border-radius:3px;transition:all 0.25s;
+}
+.aq-fb.correct{background:rgba(46,213,115,0.08);border:1px solid rgba(46,213,115,0.2);color:var(--green)}
+.aq-fb.wrong{background:rgba(255,71,87,0.06);border:1px solid rgba(255,71,87,0.2);color:var(--text-dim)}
+.aq-fb.timeout{background:rgba(255,209,102,0.06);border:1px solid rgba(255,209,102,0.2);color:var(--gold)}
+/* Result */
+.aq-result{display:none;text-align:center;padding:40px 24px}
+.aq-result.active{display:block;animation:fadeUp 0.5s ease forwards}
+.aq-result-grade{
+  font-family:var(--font-head);font-size:5rem;font-weight:900;
+  background:linear-gradient(135deg,var(--cyan),var(--purple));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  line-height:1;margin-bottom:8px;
+}
+.aq-result-label{font-family:var(--font-mono);font-size:0.65rem;color:var(--text-muted);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:20px}
+.aq-result-stats{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
+.aq-result-stat{background:var(--surface);border:1px solid var(--border);border-radius:3px;padding:16px 24px;min-width:100px}
+.aq-result-stat-num{font-family:var(--font-head);font-size:1.4rem;color:var(--cyan);display:block;margin-bottom:4px}
+.aq-result-stat-lbl{font-family:var(--font-mono);font-size:0.55rem;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase}
+.aq-result-msg{font-size:0.95rem;color:var(--text-dim);max-width:480px;margin:0 auto 24px;line-height:1.8}
+.aq-result-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.aq-replay-btn{
+  padding:11px 28px;background:linear-gradient(135deg,var(--red),var(--purple));
+  border:none;color:#fff;font-family:var(--font-mono);font-size:0.65rem;
+  letter-spacing:0.12em;text-transform:uppercase;border-radius:2px;
+  cursor:pointer!important;transition:opacity 0.2s,transform 0.15s;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.aq-replay-btn:hover{opacity:0.88;transform:translateY(-1px)}
+@media(max-width:580px){
+  .aq-options{grid-template-columns:1fr}
+  .aq-hud{flex-direction:column;align-items:flex-start}
+}
+
+/* ============================================================
+   SCORE SHARE CARD GENERATOR
+============================================================ */
+.aq-share-btn{
+  padding:11px 28px;border:1px solid var(--border);background:transparent;
+  color:var(--text-dim);font-family:var(--font-mono);font-size:0.65rem;
+  letter-spacing:0.12em;text-transform:uppercase;border-radius:2px;
+  cursor:pointer!important;transition:all 0.2s;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.aq-share-btn:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(0,255,247,0.06)}
+#score-share-preview{
+  max-width:480px;margin:20px auto 0;border-radius:4px;overflow:hidden;
+  border:1px solid var(--border);display:none;
+}
+#score-share-preview.show{display:block;animation:fadeUp 0.4s ease}
+#score-share-canvas{width:100%;display:block}
+.score-share-actions{
+  display:flex;gap:10px;justify-content:center;padding:12px;
+  background:var(--surface);border-top:1px solid var(--border);
+}
+.score-dl-btn,.score-copy-btn{
+  padding:8px 18px;font-family:var(--font-mono);font-size:0.6rem;
+  letter-spacing:0.1em;text-transform:uppercase;border-radius:2px;
+  cursor:pointer!important;transition:all 0.2s;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.score-dl-btn{background:var(--blue);border:none;color:var(--bg)}
+.score-dl-btn:hover{background:var(--cyan)}
+.score-copy-btn{background:transparent;border:1px solid var(--border);color:var(--text-dim)}
+.score-copy-btn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* bonus glitch anim for arcade */
+@keyframes shakeBad{0%,100%{transform:translateX(0)}20%{transform:translateX(-5px)}40%{transform:translateX(5px)}60%{transform:translateX(-3px)}80%{transform:translateX(3px)}}
+.shake{animation:shakeBad 0.35s ease}
+
 </style>
 </head>
 <body>
-   
+
+<!-- ============================================================
+     ONBOARDING
+============================================================ -->
+<div id="onboarding-overlay">
+  <div class="ob-box">
+    <div class="ob-progress">
+      <div class="ob-dot active" id="ob-d1"></div>
+      <div class="ob-dot" id="ob-d2"></div>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="ob-step active" id="ob-step1">
+      <p class="ob-eyebrow"><i class="fa-solid fa-circle-nodes"></i> &nbsp;AI Odyssey · INIT 6.0</p>
+      <h1 class="ob-title">Welcome, <span class="g">Explorer</span></h1>
+      <p class="ob-sub">Before we begin your journey through the history and future of Artificial Intelligence, tell us — how much do you already know?</p>
+      <div class="ob-choices">
+        <button class="ob-choice" onclick="selectLevel('beginner',this)">
+          <span class="ob-choice-icon">🌱</span>
+          <div>
+            <span class="ob-choice-label">I'm just getting started</span>
+            <span class="ob-choice-sub">New to AI — curious to learn</span>
+          </div>
+        </button>
+        <button class="ob-choice" onclick="selectLevel('curious',this)">
+          <span class="ob-choice-icon">⚡</span>
+          <div>
+            <span class="ob-choice-label">I know the basics</span>
+            <span class="ob-choice-sub">I've heard of ChatGPT, neural nets, etc.</span>
+          </div>
+        </button>
+        <button class="ob-choice" onclick="selectLevel('expert',this)">
+          <span class="ob-choice-icon">🧠</span>
+          <div>
+            <span class="ob-choice-label">I'm an AI enthusiast</span>
+            <span class="ob-choice-sub">I follow the field closely</span>
+          </div>
+        </button>
+      </div>
+      <button class="ob-skip" onclick="finishOnboarding('curious')">Skip intro →</button>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="ob-step" id="ob-step2">
+      <p class="ob-eyebrow"><i class="fa-solid fa-check-circle"></i> &nbsp;Perfect</p>
+      <h1 class="ob-title" id="ob-step2-title">Ready to <span class="g">Explore</span></h1>
+      <p class="ob-sub" id="ob-step2-sub">Your experience has been personalized. The AI Odyssey awaits.</p>
+      <button class="btn-primary" onclick="finishOnboarding();unlockAudio()" style="margin:0 auto;display:inline-flex;cursor:pointer!important">
+        <span>Begin the Journey</span> <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
 <div id="loader">
   <canvas id="loader-canvas"></canvas>
   <div class="loader-logo">AI ODYSSEY</div>
@@ -775,7 +1601,10 @@ footer{
   <a href="#timeline" onclick="closeDrawer()">Timeline</a>
   <a href="#how-ai" onclick="closeDrawer()">How It Works</a>
   <a href="#impact" onclick="closeDrawer()">Impact</a>
-  <a href="#quiz" onclick="closeDrawer()">Quiz</a>
+  <a href="#ai-vs-human" onclick="closeDrawer()">AI vs Human</a>
+  <a href="#you-vs-gpt" onclick="closeDrawer()">You vs GPT</a>
+<a href="#arcade-quiz" onclick="closeDrawer()">⚡ Arcade</a>
+  <a href="#predict-future" onclick="closeDrawer()">Predict</a>
   <a href="#controversy" onclick="closeDrawer()">Debate</a>
   <a href="#future" onclick="closeDrawer()">Future</a>
 </div>
@@ -787,11 +1616,14 @@ footer{
     <li><a href="#timeline">Timeline</a></li>
     <li><a href="#how-ai">How It Works</a></li>
     <li><a href="#impact">Impact</a></li>
-    <li><a href="#quiz">Quiz</a></li>
+    <li><a href="#arcade-quiz">⚡ Arcade Quiz</a></li>
     <li><a href="#controversy">Debate</a></li>
     <li><a href="#future">Future</a></li>
   </ul>
   <div class="nav-right">
+    <button class="dev-note-btn" onclick="openDevNote()">
+      <i class="fa-solid fa-code"></i><span>Dev Note</span>
+    </button>
     <button class="theme-btn" id="theme-btn" title="Toggle theme" aria-label="Toggle theme">
       <i class="fa-solid fa-moon" id="theme-icon"></i>
     </button>
@@ -802,8 +1634,70 @@ footer{
   <div class="nav-progress" id="nav-prog"></div>
 </nav>
 
+<!-- ============================================================
+     DEVELOPER'S NOTE MODAL
+============================================================ -->
+<div class="devnote-overlay" id="devnote-overlay" onclick="closeDevNoteOutside(event)">
+  <div class="devnote-box">
+    <div class="devnote-topbar"></div>
+    <div class="devnote-header">
+      <div class="devnote-title-wrap">
+        <div class="devnote-icon"><i class="fa-solid fa-terminal"></i></div>
+        <div>
+          <div class="devnote-title">Developer's Note</div>
+          <div class="devnote-subtitle">Build transparency &amp; technical disclosure</div>
+        </div>
+      </div>
+      <button class="devnote-close" onclick="closeDevNote()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="devnote-body">
+      <div class="dn-block arch">
+        <div class="dn-block-head"><i class="fa-solid fa-layer-group"></i>Development</div>
+        <p>This is a custom-built interactive documentary webpage exploring the history and impact of artificial intelligence developed by <a style="font-family: Courier; color: white; textweight: bold;" href="https://foysal1627.github.io" target="_blank">Foysal Mahmud</a> for INIT 6.0.</p>
+      </div>
+      <div class="dn-block ai">
+        <div class="dn-block-head"><i class="fa-solid fa-robot"></i> AI Assistance &amp; Integration</div>
+        <ul>
+          <li><i class="fa-solid fa-circle-dot"></i><span>AI was used to assist with research, data gathering, and structuring content for this site.</span></li>
+          <li><i class="fa-solid fa-circle-dot"></i><span>An external AI model is integrated via a third-party API to power the interactive assistant.</span></li>
+        </ul>
+      </div>
+      <div class="dn-block warn">
+        <div class="dn-block-head"><i class="fa-solid fa-triangle-exclamation"></i> Technical Constraints</div>
+        <ul>
+          <li><i class="fa-solid fa-bolt"></i><span><strong>API Latency:</strong> The free-tier model may occasionally take extra seconds to respond.</span></li>
+          <li><i class="fa-solid fa-circle-exclamation"></i><span><strong>Service Errors:</strong> Quota or server limits may cause temporary "Request Error" messages.</span></li>
+        </ul>
+      </div>
+      <div class="dn-tip">
+        <i class="fa-solid fa-lightbulb"></i>
+        <span>If the AI doesn't respond, wait a moment and retry — or refresh the page. This is expected with a free-tier API.</span>
+      </div>
+    </div>
+    <div class="devnote-footer">
+      <button class="dn-close-btn" onclick="closeDevNote()"><i class="fa-solid fa-check"></i> Got it</button>
+    </div>
+  </div>
+</div>
+
+<!-- SHARE TOAST -->
+<div id="share-toast"><i class="fa-solid fa-check-circle"></i> &nbsp;Quote card downloaded!</div>
+
+<!-- EASTER EGG OVERLAY -->
+<div id="easter-egg-overlay">
+  <canvas id="matrix-canvas"></canvas>
+  <div class="ee-text">🤖 You Found It.</div>
+  <div class="ee-sub">The machines have been watching.</div>
+  <button class="ee-close" onclick="closeEasterEgg()">Return to Reality →</button>
+</div>
+
+<!-- SECTION SCANLINE FLASH -->
+<div id="section-scanline"></div>
+
 <section id="hero">
   <canvas id="hero-canvas"></canvas>
+  <canvas class="hero-parallax-layer" id="parallax-bg"></canvas>
+  <canvas class="hero-parallax-layer" id="parallax-mid"></canvas>
   <div class="hero-content">
     <p class="hero-eyebrow"><i class="fa-solid fa-circle-nodes"></i> &nbsp;An Interactive Documentary · INIT 6.0</p>
     <h1 class="hero-title">
@@ -813,7 +1707,7 @@ footer{
     <p class="hero-sub">From a mathematician's dream in 1950 to machines that write, reason and create the story of artificial intelligence is the most audacious journey humanity has ever undertaken.</p>
     <div class="hero-btns">
       <a href="#timeline" class="btn-primary"><span>Begin the Journey</span> <i class="fa-solid fa-arrow-down"></i></a>
-      <a href="#quiz" class="btn-outline"><i class="fa-solid fa-brain"></i> <span>Test Your Knowledge</span></a>
+      <a href="#arcade-quiz" class="btn-outline"><i class="fa-solid fa-brain"></i> <span>Test Your Knowledge</span></a>
     </div>
   </div>
   <div class="scroll-hint">
@@ -822,13 +1716,41 @@ footer{
   </div>
 </section>
 
-<!-- STATS -->
+<!-- STATS barrr -->
 <section id="stats-bar">
   <div class="stats-grid">
     <div class="stat-item reveal"><span class="stat-num" data-t="75" data-s=" yrs">0</span><span class="stat-label">Years of AI Research</span></div>
     <div class="stat-item reveal d1"><span class="stat-num" data-t="1.8" data-s="T params">0</span><span class="stat-label">Parameters in GPT-4</span></div>
     <div class="stat-item reveal d2"><span class="stat-num" data-t="180" data-s="M+ users">0</span><span class="stat-label">ChatGPT Adoption</span></div>
     <div class="stat-item reveal d3"><span class="stat-num" data-pre="$" data-t="15" data-s="T by 2030">$0</span><span class="stat-label">AI Market Size</span></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     LIVE AI PULSE
+============================================================ -->
+<section id="ai-pulse">
+  <div class="pulse-header">
+    <div class="pulse-live-dot"></div>
+    Live AI Activity — Since You Opened This Page
+  </div>
+  <div class="pulse-grid">
+    <div class="pulse-item">
+      <span class="pulse-num" id="pulse-tokens">0</span>
+      <span class="pulse-lbl">GPT-4 Tokens Generated</span>
+    </div>
+    <div class="pulse-item">
+      <span class="pulse-num" id="pulse-images">0</span>
+      <span class="pulse-lbl">AI Images Created</span>
+    </div>
+    <div class="pulse-item">
+      <span class="pulse-num" id="pulse-searches">0</span>
+      <span class="pulse-lbl">AI-Assisted Searches</span>
+    </div>
+    <div class="pulse-item">
+      <span class="pulse-num" id="pulse-predictions">0</span>
+      <span class="pulse-lbl">ML Predictions Made</span>
+    </div>
   </div>
 </section>
 
@@ -844,6 +1766,7 @@ footer{
 
       <div class="tl-item reveal">
         <div class="tl-card">
+          <button class="tl-share-btn" onclick="shareQuote(this)" data-quote="Alan Turing asked the question that started it all: Can machines think? — 1950" title="Download quote card"><i class="fa-solid fa-share-nodes"></i></button>
           <i class="fa-solid fa-brain tl-icon"></i>
           <h3>The Turing Test</h3>
           <p>Alan Turing published "Computing Machinery and Intelligence," asking the question that started it all: <em>Can machines think?</em> He proposed an imitation game that still shapes AI philosophy today.</p>
@@ -857,6 +1780,7 @@ footer{
         <div class="tl-void"></div>
         <div class="tl-pin"><div class="tl-dot"></div><span class="tl-yr">1956</span></div>
         <div class="tl-card">
+          <button class="tl-share-btn" onclick="shareQuote(this)" data-quote="John McCarthy coined 'Artificial Intelligence' at Dartmouth, 1956 — confident machines could think within a generation." title="Download quote card"><i class="fa-solid fa-share-nodes"></i></button>
           <i class="fa-solid fa-graduation-cap tl-icon"></i>
           <h3>AI is Born - Dartmouth Conference</h3>
           <p>John McCarthy coined the term "Artificial Intelligence." A summer workshop gathered the brightest minds, confident they could simulate human intelligence within a generation.</p>
@@ -866,6 +1790,7 @@ footer{
 
       <div class="tl-item reveal d2">
         <div class="tl-card">
+          <button class="tl-share-btn" onclick="shareQuote(this)" data-quote="The First AI Winter, 1973 — Overpromised and underfunded. AI labs went dark. A harsh lesson in expectation vs. reality." title="Download quote card"><i class="fa-solid fa-share-nodes"></i></button>
           <i class="fa-solid fa-snowflake tl-icon" style="color:var(--text-dim)"></i>
           <h3>The First AI Winter</h3>
           <p>Overpromised and underfunded. Government reports slashed research budgets. AI labs went dark a harsh lesson in expectation vs. reality that would repeat again in the late 1980s.</p>
@@ -879,6 +1804,7 @@ footer{
         <div class="tl-void"></div>
         <div class="tl-pin"><div class="tl-dot"></div><span class="tl-yr">1997</span></div>
         <div class="tl-card">
+          <button class="tl-share-btn" onclick="shareQuote(this)" data-quote="Deep Blue defeated world chess champion Garry Kasparov in 1997. A machine had bested humanity's greatest strategic mind." title="Download quote card"><i class="fa-solid fa-share-nodes"></i></button>
           <i class="fa-solid fa-chess-king tl-icon"></i>
           <h3>Deep Blue Beats Kasparov</h3>
           <p>IBM's Deep Blue defeated world chess champion Garry Kasparov. The world watched, stunned! A machine had bested humanity's greatest strategic mind at its own game.</p>
@@ -888,6 +1814,7 @@ footer{
 
       <div class="tl-item reveal d2">
         <div class="tl-card">
+          <button class="tl-share-btn" onclick="shareQuote(this)" data-quote="AlexNet, 2012 — Deep convolutional neural networks weren't just better. They were in a different league entirely." title="Download quote card"><i class="fa-solid fa-share-nodes"></i></button>
           <i class="fa-solid fa-eye tl-icon"></i>
           <h3>Deep Learning Revolution — AlexNet</h3>
           <p>Geoffrey Hinton's team shattered all records in the ImageNet competition. Deep convolutional neural networks weren't just better — they were in a different league entirely.</p>
@@ -901,6 +1828,7 @@ footer{
      <div class="tl-void"></div>
           <div class="tl-pin"><div class="tl-dot" style="border-color:var(--purple)"></div><span class="tl-yr" style="color:var(--purple)">2017</span></div>
     <div class="tl-card">
+          <button class="tl-share-btn" onclick="shareQuote(this)" data-quote="'Attention is All You Need' (2017) — The Transformer architecture unlocked language understanding at scale and changed everything." title="Download quote card"><i class="fa-solid fa-share-nodes"></i></button>
           <i class="fa-solid fa-bolt tl-icon" style="color:var(--purple)"></i>
           <h3>"Attention is All You Need"</h3>
           <p>Google researchers published a paper that changed everything. The Transformer architecture unlocked language understanding at scale — the foundation for GPT, BERT, and every modern AI model.</p>
@@ -910,6 +1838,7 @@ footer{
 
          <div class="tl-item reveal d2">
         <div class="tl-card">
+          <button class="tl-share-btn" onclick="shareQuote(this)" data-quote="ChatGPT reached 100 million users in just 2 months (2022) — the fastest technology adoption in history." title="Download quote card"><i class="fa-solid fa-share-nodes"></i></button>
           <i class="fa-solid fa-rocket tl-icon" style="color:var(--cyan)"></i>
           <h3>ChatGPT Changes the World</h3>
                  <p>OpenAI's ChatGPT crossed 100 million users in just 2 months — the fastest technology adoption in history. AI moved from research labs to every dinner table on the planet overnight.</p>
@@ -1000,35 +1929,127 @@ footer{
   </div>
 </section>
 
-<!-- qz for user -->
-<section id="quiz">
+<!-- ============================================================
+     AI vs HUMAN
+============================================================ -->
+<section id="ai-vs-human">
   <div class="container">
-    <div class="quiz-wrap reveal">
-      <div class="quiz-header">
-        <p class="section-label">Challenge Yourself</p>
-    <h2 class="section-title" style="font-size:clamp(1.4rem,3vw,2rem)">How Much Do You Know About AI?</h2>
-        <p class="section-desc" style="margin:8px auto 0;font-size:0.88rem">6 questions · Instant feedback · No pressure</p>   </div>
-    
-      <div id="quiz-game">
-        <div class="quiz-meta">Question <span id="q-current">1</span> of <span id="q-total">6</span></div>
-        <div class="quiz-progress-track"><div class="quiz-progress-fill" id="q-progress"></div></div>
-        <div class="q-text" id="q-text"></div>
-        <div class="q-options" id="q-options"></div>
-        <div class="q-feedback" id="q-feedback"></div>
-        <button class="q-next" id="q-next" onclick="nextQuestion()"><span>Next Question</span> <i class="fa-solid fa-arrow-right"></i></button>  </div>
-      <div class="quiz-result" id="quiz-result">
-        <div class="result-circle">
-          <span class="result-score" id="r-score">0</span>
-          <span class="result-total" id="r-total">/ 6</span>
+    <div class="avh-header reveal">
+      <p class="section-label">The Showdown</p>
+      <h2 class="section-title">AI vs. Human</h2>
+      <p class="section-desc">Pick a task, hit Run, and watch both sides respond in real time.</p>
+    </div>
+    <div class="avh-controls reveal d1">
+      <button class="avh-task-btn active" onclick="setAvhTask(this,'poem')">Write a poem</button>
+      <button class="avh-task-btn" onclick="setAvhTask(this,'joke')">Tell a joke</button>
+      <button class="avh-task-btn" onclick="setAvhTask(this,'idea')">Startup idea</button>
+      <button class="avh-task-btn" onclick="setAvhTask(this,'haiku')">Haiku about tech</button>
+    </div>
+    <div class="avh-arena reveal d2">
+      <div class="avh-side">
+        <div class="avh-label human"><i class="fa-solid fa-user"></i> Human</div>
+        <div class="avh-output" id="avh-human-out"><span style="color:var(--text-muted);font-size:0.8rem">Hit "Run" to begin...</span></div>
+        <div class="avh-speed human"><i class="fa-solid fa-hourglass-half"></i> ~30–120 seconds to think</div>
+      </div>
+      <div class="avh-side">
+        <div class="avh-label ai"><i class="fa-solid fa-robot"></i> AI</div>
+        <div class="avh-output" id="avh-ai-out"><span style="color:var(--text-muted);font-size:0.8rem">Hit "Run" to begin...</span></div>
+        <div class="avh-speed ai"><i class="fa-solid fa-bolt"></i> ~1–2 seconds</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:20px">
+      <button class="avh-run-btn reveal d3" id="avh-run" onclick="runAvh()">
+        <i class="fa-solid fa-play"></i> Run Comparison
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ARCADE QUIZ — SPEED ROUND
+============================================================ -->
+<section id="arcade-quiz">
+  <div class="container">
+    <div class="aq-header reveal">
+      <p class="section-label"><i class="fa-solid fa-gamepad"></i> &nbsp;Arcade Mode</p>
+      <h2 class="section-title">AI Trivia Speed Round</h2>
+      <p class="section-desc">15 seconds per question. No mercy. Streak bonuses. Think fast. Challenge your knowledge!</p>
+    </div>
+    <div class="aq-wrap reveal d1">
+      <!-- Intro screen -->
+      <div class="aq-intro" id="aq-intro">
+        <div class="aq-intro-icon">⚡</div>
+        <h3>Can You Beat the Clock?</h3>
+        <p>10 questions. 15 seconds each. Every correct answer in a streak earns bonus points. Miss one and the streak resets. No second chances — this is Arcade Mode.</p>
+        <div class="aq-rules">
+          <div class="aq-rule"><i class="fa-solid fa-clock"></i> 15s per question</div>
+          <div class="aq-rule"><i class="fa-solid fa-fire"></i> Streak bonuses</div>
+          <div class="aq-rule"><i class="fa-solid fa-volume-high"></i> Sound effects</div>
+          <div class="aq-rule"><i class="fa-solid fa-image"></i> Share your score</div>
         </div>
-   <p class="result-msg" id="r-msg"></p>
-        <p class="result-sub" id="r-sub"></p>
-        <div class="result-badges" id="r-badges"></div>
-    <button class="restart-btn" onclick="restartQuiz()"><i class="fa-solid fa-rotate-left"></i> &nbsp;Try Again</button>
+        <button class="aq-start-btn" onclick="aqStart()"><i class="fa-solid fa-bolt"></i> Start Speed Round</button>
+      </div>
+
+      <!-- Game screen -->
+      <div class="aq-game" id="aq-game">
+        <!-- HUD -->
+        <div class="aq-hud">
+          <div class="aq-hud-left">
+            <div class="aq-timer-wrap">
+              <svg class="aq-timer-svg" viewBox="0 0 44 44">
+                <circle class="aq-timer-bg" cx="22" cy="22" r="22"/>
+                <circle class="aq-timer-fg" id="aq-timer-circle" cx="22" cy="22" r="22"/>
+              </svg>
+              <div class="aq-timer-num" id="aq-timer-num">15</div>
+            </div>
+            <div>
+              <div class="aq-score-display" id="aq-score-num">0</div>
+              <div class="aq-score-label">SCORE</div>
+            </div>
+          </div>
+          <div>
+            <div class="aq-streak" id="aq-streak-badge">🔥 Streak: 0</div>
+          </div>
+          <div class="aq-qnum" id="aq-qnum">Q 1/10</div>
+        </div>
+        <div class="aq-progress-track"><div class="aq-progress-fill" id="aq-progress"></div></div>
+
+        <!-- Question -->
+        <div class="aq-qbox">
+          <div class="aq-category" id="aq-category">Category</div>
+          <div class="aq-qtext" id="aq-qtext">Loading...</div>
+        </div>
+        <div class="aq-options" id="aq-options"></div>
+        <div class="aq-fb" id="aq-fb"></div>
+      </div>
+
+      <!-- Result screen -->
+      <div class="aq-result" id="aq-result">
+        <div class="aq-result-grade" id="aq-final-score">0</div>
+        <div class="aq-result-label">Final Score</div>
+        <div class="aq-result-stats">
+          <div class="aq-result-stat"><span class="aq-result-stat-num" id="aq-stat-correct">0</span><span class="aq-result-stat-lbl">Correct</span></div>
+          <div class="aq-result-stat"><span class="aq-result-stat-num" id="aq-stat-streak">0</span><span class="aq-result-stat-lbl">Best Streak</span></div>
+          <div class="aq-result-stat"><span class="aq-result-stat-num" id="aq-stat-acc">0%</span><span class="aq-result-stat-lbl">Accuracy</span></div>
+        </div>
+        <p class="aq-result-msg" id="aq-result-msg"></p>
+        <div class="aq-result-btns">
+          <button class="aq-replay-btn" onclick="aqRestart()"><i class="fa-solid fa-rotate-right"></i> Play Again</button>
+          <button class="aq-share-btn" onclick="aqGenerateCard()"><i class="fa-solid fa-share-nodes"></i> Share Score</button>
+        </div>
+        <!-- Share card preview -->
+        <div id="score-share-preview">
+          <canvas id="score-share-canvas"></canvas>
+          <div class="score-share-actions">
+            <button class="score-dl-btn" onclick="aqDownloadCard()"><i class="fa-solid fa-download"></i> Download</button>
+            <button class="score-copy-btn" onclick="aqCopyCard()"><i class="fa-solid fa-copy"></i> Copy Image</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
 
 <!--debate -->
 <section id="controversy" style="padding-top:0">
@@ -1063,6 +2084,180 @@ footer{
   </div>
 </section>
 
+<!-- ============================================================
+     YOU vs GPT-4 READING SPEED
+============================================================ -->
+<section id="you-vs-gpt">
+  <div class="container">
+    <div class="yvg-header reveal">
+      <p class="section-label">The Reality Check</p>
+      <h2 class="section-title">You vs. GPT‑4</h2>
+      <p class="section-desc">Read the paragraph below at your natural pace. Then see how long it takes GPT‑4 to process the same text.</p>
+    </div>
+    <div class="yvg-arena reveal d1">
+      <div class="yvg-passage">
+        <div class="yvg-passage-label"><i class="fa-solid fa-book-open"></i> Read this passage</div>
+        <p id="yvg-text">The history of artificial intelligence is a story of oscillating ambition. Alan Turing first posed the question in 1950; within six years, the field had a name. Decades of progress and setback followed — two "AI Winters" where funding dried up and skepticism grew. Then, in 2012, a single research paper on deep learning shattered computer vision benchmarks by a margin so large it seemed like a mistake. It wasn't. A decade later, a chatbot reached one hundred million users in two months — faster than any technology in history. What took humanity seventy years of research had become, for billions of people, simply a tab in their browser.</p>
+      </div>
+      <div class="yvg-controls">
+        <button class="yvg-start-btn" id="yvg-start" onclick="yvgStart()">
+          <i class="fa-solid fa-play"></i> Start Reading
+        </button>
+        <button class="yvg-done-btn" id="yvg-done" onclick="yvgDone()">
+          <i class="fa-solid fa-check"></i> Done Reading
+        </button>
+        <div>
+          <div class="yvg-timer-display" id="yvg-timer">0.0s</div>
+          <div class="yvg-timer-label">your time</div>
+        </div>
+      </div>
+      <div class="yvg-results" id="yvg-results">
+        <div class="yvg-vs-grid">
+          <div class="yvg-stat-box you">
+            <div class="yvg-stat-who"><i class="fa-solid fa-user"></i> You</div>
+            <div class="yvg-stat-val" id="yvg-your-time">—</div>
+            <div class="yvg-stat-sub">seconds to read</div>
+          </div>
+          <div class="yvg-stat-box gpt">
+            <div class="yvg-stat-who"><i class="fa-solid fa-robot"></i> GPT‑4</div>
+            <div class="yvg-stat-val">0.004s</div>
+            <div class="yvg-stat-sub">to process same text</div>
+          </div>
+        </div>
+        <div class="yvg-insight" id="yvg-insight">
+          <i class="fa-solid fa-bolt"></i>
+          <span id="yvg-insight-text"></span>
+        </div>
+        <div class="yvg-retry">
+          <button class="yvg-retry-btn" onclick="yvgReset()"><i class="fa-solid fa-rotate-left"></i> Try Again</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PREDICT THE FUTURE
+============================================================ -->
+<section id="predict-future">
+  <div class="container">
+    <div class="ptf-header reveal">
+      <p class="section-label">Your Prediction</p>
+      <h2 class="section-title">When Will AGI Arrive?</h2>
+      <p class="section-desc">Artificial General Intelligence — a machine that matches human reasoning across any domain. When do <em>you</em> think it gets here?</p>
+    </div>
+    <div class="ptf-wrap reveal d1">
+      <div class="ptf-timeline" id="ptf-timeline">
+        <div class="ptf-track"></div>
+        <div class="ptf-year-labels">
+          <span>2025</span><span>2030</span><span>2035</span><span>2040</span><span>2045</span><span>2050+</span>
+        </div>
+        <!-- anchors for known predictions -->
+        <div class="ptf-anchor" style="left:calc(48px + (100% - 96px)*0.08)" title="Elon Musk prediction">
+          <div class="ptf-anchor-label" style="color:var(--purple);font-size:0.5rem">Musk ~2026</div>
+        </div>
+        <div class="ptf-anchor" style="left:calc(48px + (100% - 96px)*0.22)" title="Sam Altman prediction">
+          <div class="ptf-anchor-label" style="color:var(--blue);font-size:0.5rem">Altman ~2028</div>
+        </div>
+        <div class="ptf-anchor" style="left:calc(48px + (100% - 96px)*0.55)" title="Geoffrey Hinton prediction">
+          <div class="ptf-anchor-label" style="color:var(--cyan);font-size:0.5rem">Hinton ~2035</div>
+        </div>
+        <!-- user dot (shown after submit) -->
+        <div class="ptf-user-dot" id="ptf-user-dot">
+          <div class="ptf-user-dot-label" id="ptf-dot-label">You</div>
+        </div>
+      </div>
+
+      <div class="ptf-input-row">
+        <span class="ptf-label">I predict AGI by</span>
+        <input type="range" class="ptf-slider" id="ptf-slider" min="2025" max="2075" value="2035" oninput="ptfUpdate(this.value)">
+        <span class="ptf-year-val" id="ptf-year-val">2035</span>
+        <button class="ptf-submit-btn" onclick="ptfSubmit()"><i class="fa-solid fa-location-dot"></i> Pin My Prediction</button>
+      </div>
+
+      <div class="ptf-result" id="ptf-result">
+        <div class="ptf-result-top">
+          <div class="ptf-result-icon"><i class="fa-solid fa-flag-checkered"></i></div>
+          <div class="ptf-result-text" id="ptf-result-text"></div>
+        </div>
+        <div class="ptf-agree-bar-wrap">
+          <div class="ptf-agree-label">
+            <span>Visitor agreement</span>
+            <span id="ptf-pct-label">0%</span>
+          </div>
+          <div class="ptf-agree-track"><div class="ptf-agree-fill" id="ptf-agree-fill"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TURING TEST GAME
+============================================================ -->
+<section id="turing-game">
+  <div class="container">
+    <div class="tg-header reveal">
+      <p class="section-label">The Challenge</p>
+      <h2 class="section-title">Can You Pass the Turing Test?</h2>
+      <p class="section-desc">Read two conversation responses. One is from a human, one from an AI. Can you tell which is AI?</p>
+    </div>
+    <div class="tg-arena">
+      <div class="tg-round-badge reveal">
+        <div class="pulse-live-dot" style="background:var(--green)"></div>
+        <span class="tg-live">Round</span> &nbsp;<span id="tg-round-num">1</span> / 4
+        &nbsp;·&nbsp; Score: <span id="tg-score-display" style="color:var(--cyan)">0</span>
+      </div>
+
+      <!-- Conversation display -->
+      <div class="tg-conversation reveal d1" id="tg-convo">
+        <div class="tg-convo-header"><i class="fa-solid fa-message"></i> Mystery Conversation</div>
+        <div class="tg-messages" id="tg-messages"></div>
+      </div>
+
+      <!-- Prompt box -->
+      <div class="tg-prompt-box reveal d2">
+        <i class="fa-solid fa-question-circle"></i>
+        <span id="tg-question-text">The question above was posed to both a human and an AI. Which response below do you think came from the AI?</span>
+      </div>
+
+      <!-- Choice buttons -->
+      <div class="tg-choice-row reveal d3" id="tg-choices">
+        <button class="tg-choice-btn" id="tg-btn-a" onclick="tgGuess('A')">
+          <span class="tg-label">Respondent A</span>
+          <span class="tg-sub" id="tg-a-preview">...</span>
+        </button>
+        <button class="tg-choice-btn" id="tg-btn-b" onclick="tgGuess('B')">
+          <span class="tg-label">Respondent B</span>
+          <span class="tg-sub" id="tg-b-preview">...</span>
+        </button>
+      </div>
+
+      <!-- Result reveal -->
+      <div class="tg-result-reveal" id="tg-result">
+        <div class="tg-result-top">
+          <div class="tg-result-icon" id="tg-result-icon"><i class="fa-solid fa-check"></i></div>
+          <div class="tg-result-body" id="tg-result-body"></div>
+        </div>
+        <div class="tg-score-row" id="tg-pips"></div>
+        <button class="tg-next-btn" id="tg-next-btn" onclick="tgNext()">
+          <i class="fa-solid fa-arrow-right"></i> Next Round
+        </button>
+      </div>
+
+      <!-- Final score box -->
+      <div class="tg-final-box" id="tg-final">
+        <div class="tg-final-score" id="tg-final-score">0/4</div>
+        <div class="tg-final-label">Your Turing Score</div>
+        <p class="tg-final-msg" id="tg-final-msg"></p>
+        <button class="tg-replay-btn" onclick="tgRestart()">
+          <i class="fa-solid fa-rotate-left"></i> Play Again
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
      <section id="future">
   <div class="container">
     <div class="future-header reveal">
@@ -1083,12 +2278,13 @@ footer{
       <p>Every developer, researcher, policymaker, and citizen alive today gets to influence how this chapter ends. The AI Odyssey isn't just happening to us — we are its authors.</p>
     <div class="btn-grp">
            <a href="#hero" class="btn-primary"><i class="fa-solid fa-arrow-up"></i> <span>Back to Beginning</span></a>
-        <a href="#quiz" class="btn-outline"><i class="fa-solid fa-brain"></i> <span>Take the Quiz</span></a>
+        <a href="#arcade-quiz" class="btn-outline"><i class="fa-solid fa-brain"></i> <span>Take the Quiz</span></a>
       </div>
     </div>
   </div>
 </section>
-
+<p style="text-align: center; color: #a9c2da; font-family: courier; font-size: 0.75rem; margin: 40px 0 20px;">Made with ❤️ by <a href="https://foysal1627.github.io" target="_blank"><b><i><u>Foysal Mahmud</u></i></b></a> for the Webpage Designing & Development event of <b><i>INIT 6.0</i></b></p>
+<p style="text-align: center; word-spacing: -4px; color: #a9c2da; font-family: courier; font-size: 0.75rem; margin: 0 0 40px;">Developer, <a href="https://asf25.ndscbd.net" target="_blank"><b><u>ASF25 & 35th GKC</u></b></a>, <i><b>Notre Dame Science Club</b></i><br>Member of <i><b>Notre Dame Information Technology Club</b></i></p>
 <!-- FOOTER-->
 <footer>
   <div class="footer-logo">AI ODYSSEY · INIT 6.0</div>
@@ -1096,7 +2292,8 @@ footer{
   <ul class="footer-links">
     <li><a href="#timeline">Timeline</a></li>
     <li><a href="#how-ai">Science</a></li>
-    <li><a href="#quiz">Quiz</a></li>
+    <li><a href="#arcade-quiz">⚡ Arcade Quiz</a></li>
+    <li><a href="#turing-game">Turing</a></li>
     <li><a href="#future">Future</a></li>
   </ul>
 </footer>
@@ -1111,8 +2308,8 @@ footer{
     <div class="chat-head-info">
       <div class="chat-avatar"><i class="fa-solid fa-robot"></i></div>
       <div class="chat-head-text">
-   <h4>AI Odyssey Assistant</h4>
-        <span><i class="fa-solid fa-circle" style="font-size:0.5rem"></i>Online</span>
+   <h4>AI Odyssey Assistant 1.0</h4>
+        <span><i class="fa-solid fa-circle" style="font-size:0.5rem"></i> Online</span>
       </div>
     </div>
     <button class="chat-close" onclick="toggleChat()"><i class="fa-solid fa-xmark"></i></button>
@@ -1348,88 +2545,7 @@ window.switchTab=switchTab;
   window.addEventListener('resize',()=>{pos=getPos();draw(false)});
 })();
 
-/* qzz */
-const quizData=[
-  {q:"Who coined the term 'Artificial Intelligence'?",opts:["Alan Turing","John McCarthy","Claude Shannon","Marvin Minsky"],ans:1,fb:"John McCarthy coined the term at the 1956 Dartmouth Conference. Alan Turing, however, was the one who first asked whether machines could think."},
-  {q:"What did the 2017 paper 'Attention is All You Need' introduce?",opts:["Recurrent Neural Networks","Convolutional Networks","The Transformer architecture","Generative Adversarial Networks"],ans:2,fb:"The Transformer architecture revolutionized NLP and became the backbone of all modern LLMs including GPT, BERT, and Claude."},
-  {q:"How fast did ChatGPT reach 100 million users?",opts:["6 months","1 year","2 months","3 weeks"],ans:2,fb:"ChatGPT reached 100 million users in just 2 months after launch in November 2022 — the fastest technology adoption in history."},
-  {q:"What major biology problem did DeepMind's AlphaFold solve?",opts:["DNA sequencing","Protein structure prediction","Cancer cell identification","Genome editing"],ans:1,fb:"AlphaFold predicted the 3D structure of proteins with remarkable accuracy — a problem that had stumped biologists for over 50 years."},
-  {q:"What is Reinforcement Learning?",opts:["Learning from labeled data","Learning by finding patterns without labels","Learning through trial-and-error with rewards","Learning by copying human behavior"],ans:2,fb:"Reinforcement Learning agents learn by interacting with an environment and receiving rewards or penalties. It's how DeepMind's AlphaGo mastered the game of Go."},
-  {q:"According to the IMF, approximately what percentage of jobs are exposed to AI disruption?",opts:["10%","25%","40%","60%"],ans:2,fb:"The IMF estimates that 40% of global jobs are exposed to AI. However, 'exposed' doesn't necessarily mean eliminated — many jobs will be transformed rather than replaced."},
-];
-
-let qIdx=0,score=0,answered=false;
-
-function renderQuestion(){
-  const q=quizData[qIdx];
-  document.getElementById('q-current').textContent=qIdx+1;
-  document.getElementById('q-total').textContent=quizData.length;
-  document.getElementById('q-progress').style.width=(qIdx/quizData.length*100)+'%';
-  document.getElementById('q-text').textContent=q.q;
-  const opts=document.getElementById('q-options');
-  opts.innerHTML='';
-  q.opts.forEach((o,i)=>{
-    const btn=document.createElement('button');
-    btn.className='q-opt';
-    btn.innerHTML=`<span class="opt-letter">${String.fromCharCode(65+i)}</span><span>${o}</span>`;
-    btn.onclick=()=>selectAnswer(i,btn);
-    opts.appendChild(btn);
-  });
-  const fb=document.getElementById('q-feedback');
-  fb.className='q-feedback';fb.textContent='';
-  const nxt=document.getElementById('q-next');
-  nxt.className='q-next';
-  answered=false;
-}
-
-function selectAnswer(idx,btn){
-  if(answered)return;
-  answered=true;
-  const q=quizData[qIdx];
-  const opts=document.querySelectorAll('.q-opt');
-  opts.forEach(o=>o.disabled=true);
-  const fb=document.getElementById('q-feedback');
-  if(idx===q.ans){score++;btn.classList.add('correct');opts[q.ans].classList.add('correct');fb.className='q-feedback correct-fb show';fb.innerHTML='<i class="fa-solid fa-check-circle" style="color:var(--green)"></i> &nbsp;<strong>Correct!</strong> '+q.fb;}
-  else{btn.classList.add('wrong');opts[q.ans].classList.add('correct');fb.className='q-feedback wrong-fb show';fb.innerHTML='<i class="fa-solid fa-circle-xmark" style="color:var(--red)"></i> &nbsp;<strong>Not quite.</strong> '+q.fb;}
-  document.getElementById('q-next').classList.add('show');
-}
-
-function nextQuestion(){
-  qIdx++;
-  if(qIdx>=quizData.length){showResult();return}
-  renderQuestion();
-}
-
-function showResult(){
-  document.getElementById('quiz-game').style.display='none';
-  const res=document.getElementById('quiz-result');
-  res.classList.add('show');
-  document.getElementById('r-score').textContent=score;
-  document.getElementById('r-total').textContent='/ '+quizData.length;
-  const pct=score/quizData.length;
-  let msg,sub,badges=[];
-  if(pct===1){msg='Perfect Score! 🎉';sub='You are an AI expert. Extraordinary knowledge across history, science, and ethics.';badges=[{txt:'Perfect',bg:'rgba(255,209,102,0.15)',c:'var(--gold)'},{txt:'Expert',bg:'rgba(0,168,255,0.12)',c:'var(--blue)'}];}
-  else if(pct>=0.8){msg='Impressive! Almost there.';sub='You have strong knowledge of AI. Just a couple of gaps to fill.';badges=[{txt:'Advanced',bg:'rgba(0,168,255,0.12)',c:'var(--blue)'},{txt:'Sharp Mind',bg:'rgba(46,213,115,0.12)',c:'var(--green)'}];}
-  else if(pct>=0.5){msg='Good effort! Keep exploring.';sub='You have a solid foundation. Dive deeper into the timeline and science sections above.';badges=[{txt:'Learning',bg:'rgba(0,255,247,0.12)',c:'var(--cyan)'}];}
-  else{msg='Great start — the journey begins!';sub='Don\'t worry — the best way to learn is by exploring. Read through the sections and try again!';badges=[{txt:'Explorer',bg:'rgba(123,47,255,0.12)',c:'var(--purple)'}];}
-  document.getElementById('r-msg').textContent=msg;
-  document.getElementById('r-sub').textContent=sub;
-  const bd=document.getElementById('r-badges');bd.innerHTML='';
-  badges.forEach(b=>{const s=document.createElement('span');s.className='r-badge';s.style.background=b.bg;s.style.color=b.c;s.textContent=b.txt;bd.appendChild(s)});
-}
-
-function restartQuiz(){
-  qIdx=0;score=0;answered=false;
-  document.getElementById('quiz-result').classList.remove('show');
-  document.getElementById('quiz-game').style.display='block';
-  renderQuestion();
-}
-window.nextQuestion=nextQuestion;window.restartQuiz=restartQuiz;
-renderQuestion();
-
-/* =============================================
-   CHATBOT
-============================================= */
+/*chat rob*/
 let chatOpen=false;
 const chatPanel=document.getElementById('chat-panel');
 const chatMsgs=document.getElementById('chat-messages');
@@ -1441,7 +2557,11 @@ let botGreeted=false;
 function toggleChat(){
   chatOpen=!chatOpen;
   chatPanel.classList.toggle('open',chatOpen);
-  if(chatOpen&&!botGreeted){botGreeted=true;appendMsg('bot','👋 Hi! I\'m your AI Odyssey guide. Ask me anything about artificial intelligence — history, how it works, ethics, the future, or anything else you\'re curious about!');}
+  if(chatOpen&&!botGreeted){
+    botGreeted=true;
+    const greeting = window._customGreeting || '👋 Hi! I\'m your AI Odyssey guide. Ask me anything about artificial intelligence — history, how it works, ethics, the future, or anything else you\'re curious about!';
+    appendMsg('bot', greeting);
+  }
   if(chatOpen)setTimeout(()=>chatInput.focus(),300);
 }
 window.toggleChat=toggleChat;
@@ -1515,6 +2635,974 @@ function sendSugg(btn){
   sendChat();
 }
 window.sendSugg=sendSugg;
+
+/* ============================================================
+   ONBOARDING
+============================================================ */
+let userLevel = 'curious';
+const obMessages = {
+  beginner: { title: 'Let\'s Start Simple', sub: 'We\'ll guide you through the story of AI — no jargon, just the big ideas.' },
+  curious:  { title: 'Ready to Explore', sub: 'You\'ll find plenty of depth here. Dive into the timeline, science, and debate.' },
+  expert:   { title: 'Welcome Back, Expert', sub: 'You already know the basics — enjoy the deep dives and the AI assistant.' }
+};
+
+function selectLevel(level, btn) {
+  userLevel = level;
+  document.querySelectorAll('.ob-choice').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  setTimeout(() => {
+    document.getElementById('ob-step1').classList.remove('active');
+    document.getElementById('ob-d1').classList.remove('active'); document.getElementById('ob-d1').classList.add('done');
+    document.getElementById('ob-d2').classList.add('active');
+    const m = obMessages[level];
+    document.getElementById('ob-step2-title').innerHTML = m.title.replace(/(Explore|Simple|Expert)/, '<span class="g">$1</span>');
+    document.getElementById('ob-step2-sub').textContent = m.sub;
+    document.getElementById('ob-step2').classList.add('active');
+  }, 400);
+}
+
+function finishOnboarding(lvl) {
+  if(lvl) userLevel = lvl;
+  const ov = document.getElementById('onboarding-overlay');
+  ov.classList.add('hide');
+  // Personalize chatbot greeting
+  const greetings = {
+    beginner: '👋 Hi! I\'m your AI guide. Ask me anything — no question is too basic!',
+    curious:  '👋 Hi! I\'m your AI Odyssey guide. Ask me anything about artificial intelligence!',
+    expert:   '👋 Welcome! Ready to go deep? Ask me anything — history, architecture, ethics, research papers.'
+  };
+  window._customGreeting = greetings[userLevel];
+}
+window.selectLevel = selectLevel;
+window.finishOnboarding = finishOnboarding;
+
+/* ============================================================
+   PARALLAX HERO
+============================================================ */
+(function() {
+  const hero = document.getElementById('hero');
+  const bgC = document.getElementById('parallax-bg');
+  const midC = document.getElementById('parallax-mid');
+  if(!bgC || !midC) return;
+
+  function resizeP() {
+    [bgC, midC].forEach(c => { c.width = hero.offsetWidth; c.height = hero.offsetHeight; });
+    drawBg(); drawMid();
+  }
+
+  // Background: large slow orbs
+  const bgOrbs = Array.from({length:6}, () => ({
+    x: Math.random(), y: Math.random(),
+    r: 80 + Math.random()*120,
+    hue: [200,260,180][Math.floor(Math.random()*3)],
+    speed: 0.0002 + Math.random()*0.0003,
+    angle: Math.random()*Math.PI*2
+  }));
+
+  function drawBg() {
+    const ctx = bgC.getContext('2d');
+    ctx.clearRect(0,0,bgC.width,bgC.height);
+    bgOrbs.forEach(o => {
+      const grd = ctx.createRadialGradient(o.x*bgC.width, o.y*bgC.height, 0, o.x*bgC.width, o.y*bgC.height, o.r);
+      grd.addColorStop(0, `hsla(${o.hue},80%,60%,0.12)`);
+      grd.addColorStop(1, 'transparent');
+      ctx.beginPath(); ctx.arc(o.x*bgC.width, o.y*bgC.height, o.r, 0, Math.PI*2);
+      ctx.fillStyle = grd; ctx.fill();
+    });
+  }
+
+  // Mid: floating geometric shapes
+  const shapes = Array.from({length:12}, () => ({
+    x: Math.random()*100, y: Math.random()*100,
+    size: 4+Math.random()*14, rot:Math.random()*Math.PI,
+    vx:(Math.random()-.5)*0.008, vy:(Math.random()-.5)*0.008,
+    type: Math.random() > 0.5 ? 'circle' : 'rect',
+    alpha: 0.06 + Math.random()*0.1
+  }));
+
+  function drawMid() {
+    const ctx = midC.getContext('2d');
+    ctx.clearRect(0,0,midC.width,midC.height);
+    shapes.forEach(s => {
+      ctx.globalAlpha = s.alpha;
+      ctx.strokeStyle = '#00fff7';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      if(s.type==='circle') { ctx.arc(s.x/100*midC.width, s.y/100*midC.height, s.size, 0, Math.PI*2); }
+      else {
+        const cx = s.x/100*midC.width, cy = s.y/100*midC.height;
+        ctx.save(); ctx.translate(cx,cy); ctx.rotate(s.rot);
+        ctx.rect(-s.size,-s.size,s.size*2,s.size*2); ctx.restore();
+      }
+      ctx.stroke();
+      ctx.globalAlpha = 1;
+    });
+  }
+
+  let mx=0, my=0, tx=0, ty=0;
+  document.addEventListener('mousemove', e => {
+    mx = (e.clientX/window.innerWidth - 0.5);
+    my = (e.clientY/window.innerHeight - 0.5);
+  });
+
+  let pRaf;
+  function animP() {
+    tx += (mx-tx)*0.04; ty += (my-ty)*0.04;
+    bgC.style.transform = `translate(${tx*-18}px,${ty*-12}px)`;
+    midC.style.transform = `translate(${tx*-32}px,${ty*-22}px)`;
+    shapes.forEach(s => { s.x+=s.vx; s.y+=s.vy; s.rot+=0.003; if(s.x<0||s.x>100)s.vx*=-1; if(s.y<0||s.y>100)s.vy*=-1; });
+    bgOrbs.forEach(o => { o.x += Math.cos(o.angle)*o.speed; o.y += Math.sin(o.angle)*o.speed; if(o.x<0.1||o.x>0.9)o.angle=Math.PI-o.angle; if(o.y<0.1||o.y>0.9)o.angle=-o.angle; });
+    drawBg(); drawMid();
+    pRaf = requestAnimationFrame(animP);
+  }
+  resizeP(); animP();
+  window.addEventListener('resize', () => { cancelAnimationFrame(pRaf); resizeP(); animP(); });
+})();
+
+/* pulse ai live*/
+(function() {
+  const pageOpenTime = Date.now();
+  // Real-world approximate rates per second
+  const rates = {
+    tokens:      1200000,  // GPT-4 tokens/sec globally (rough est)
+    images:      3,        // AI images/sec
+    searches:    85000,    // AI-assisted searches/sec
+    predictions: 4200000   // ML predictions/sec
+  };
+
+  function fmt(n) {
+    if(n >= 1e9) return (n/1e9).toFixed(2)+'B';
+    if(n >= 1e6) return (n/1e6).toFixed(2)+'M';
+    if(n >= 1e3) return Math.floor(n/1e3).toLocaleString()+'K';
+    return Math.floor(n).toLocaleString();
+  }
+
+  function updatePulse() {
+    const secs = (Date.now() - pageOpenTime)/1000;
+    document.getElementById('pulse-tokens').textContent     = fmt(secs * rates.tokens);
+    document.getElementById('pulse-images').textContent     = fmt(secs * rates.images);
+    document.getElementById('pulse-searches').textContent   = fmt(secs * rates.searches);
+    document.getElementById('pulse-predictions').textContent= fmt(secs * rates.predictions);
+    requestAnimationFrame(updatePulse);
+  }
+  updatePulse();
+})();
+
+/* ============================================================
+   AI vs HUMAN COMPARISON
+============================================================ */
+const avhTasks = {
+  poem:  {
+    human: ["Hmm, let me think...","\n\nIn circuits deep where silence hums,\nA question waits before it comes —\nCan a machine, with logic cold,\nFeel the warmth a story holds?"],
+    ai: "In circuits deep where silence hums,\nA question waits before it comes —\nCan a mind built from human text\nDream of what the world dreams next?\n\nPerhaps. Perhaps not. But it tries —\nand in trying, something surprising arises."
+  },
+  joke: {
+    human: ["Okay okay, I've got one...","\n\nWhy did the neural network break up with the dataset?\n\n...Because it had too many issues it couldn't train away. 😅"],
+    ai: "Why did the neural network break up with the dataset?\n\nBecause it kept finding patterns it didn't like — and no amount of backpropagation could fix the relationship."
+  },
+  idea: {
+    human: ["Ooh, startup ideas... okay...","\n\nWhat if there was an app that matched you with a study partner who has the exact opposite strengths as you? Pair a coder with a designer, a math person with a writer. Learning through contrast."],
+    ai: "\"SkillBridge\" — an AI platform that dynamically matches professionals for 30-minute knowledge swaps.\n\nYou teach what you know, learn what you don't.\nMonetization: premium async sessions + enterprise licensing.\nMVP: 3 months, $40K runway."
+  },
+  haiku: {
+    human: ["Five syllables first...","\n\nGlowing screen at night\nBillion parameters wake\nWho taught it to dream?"],
+    ai: "Billion weights align —\na question typed in the dark,\nlight answers the dark."
+  }
+};
+
+let avhCurrentTask = 'poem';
+let avhRunning = false;
+
+function setAvhTask(btn, task) {
+  avhCurrentTask = task;
+  document.querySelectorAll('.avh-task-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('avh-human-out').innerHTML = '<span style="color:var(--text-muted);font-size:0.8rem">Hit "Run" to begin...</span>';
+  document.getElementById('avh-ai-out').innerHTML = '<span style="color:var(--text-muted);font-size:0.8rem">Hit "Run" to begin...</span>';
+}
+
+function typeText(el, text, speed, cb) {
+  el.textContent = '';
+  const cursor = document.createElement('span');
+  cursor.className = 'avh-cursor';
+  el.appendChild(cursor);
+  let i = 0;
+  const iv = setInterval(() => {
+    if(i < text.length) {
+      cursor.before(text[i]); i++;
+    } else {
+      clearInterval(iv);
+      cursor.remove();
+      if(cb) cb();
+    }
+  }, speed);
+}
+
+function runAvh() {
+  if(avhRunning) return;
+  avhRunning = true;
+  const btn = document.getElementById('avh-run');
+  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Running...';
+  btn.style.opacity = '0.6';
+
+  const task = avhTasks[avhCurrentTask];
+  const humanEl = document.getElementById('avh-human-out');
+  const aiEl = document.getElementById('avh-ai-out');
+
+  humanEl.textContent = '';
+  aiEl.textContent = '';
+
+  // Human types slowly with pauses
+  let hStep = 0;
+  function humanStep() {
+    if(hStep < task.human.length) {
+      if(hStep === 0) { humanEl.innerHTML = '<span style="color:var(--text-muted);font-style:italic;font-size:0.8rem">'+task.human[0]+'</span>'; hStep++; setTimeout(humanStep, 1800); }
+      else { typeText(humanEl, task.human[1], 28, () => { avhRunning = false; btn.innerHTML = '<i class="fa-solid fa-rotate-right"></i> Run Again'; btn.style.opacity='1'; }); hStep++; }
+    }
+  }
+  humanStep();
+
+  // AI types fast after short delay
+  setTimeout(() => { typeText(aiEl, task.ai, 12); }, 600);
+}
+window.setAvhTask = setAvhTask;
+window.runAvh = runAvh;
+
+/* ============================================================
+   QUOTE SHARE CARDS (Canvas download)
+============================================================ */
+function shareQuote(btn) {
+  const quote = btn.dataset.quote;
+  const canvas = document.createElement('canvas');
+  canvas.width = 800; canvas.height = 420;
+  const ctx = canvas.getContext('2d');
+
+  // Background
+  const grd = ctx.createLinearGradient(0,0,800,420);
+  grd.addColorStop(0,'#020408'); grd.addColorStop(1,'#0a1628');
+  ctx.fillStyle = grd; ctx.fillRect(0,0,800,420);
+
+  // Border glow
+  ctx.strokeStyle = 'rgba(0,168,255,0.3)'; ctx.lineWidth = 1.5;
+  ctx.strokeRect(1,1,798,418);
+
+  // Top accent line
+  const tl = ctx.createLinearGradient(0,0,800,0);
+  tl.addColorStop(0,'#7b2fff'); tl.addColorStop(0.5,'#00a8ff'); tl.addColorStop(1,'#00fff7');
+  ctx.fillStyle = tl; ctx.fillRect(0,0,800,3);
+
+  // Quote icon
+  ctx.fillStyle = 'rgba(0,168,255,0.15)';
+  ctx.font = 'bold 80px serif'; ctx.fillText('"',48,130);
+
+  // Quote text - word wrap
+  ctx.fillStyle = '#e8f4fd';
+  ctx.font = '500 22px "Syne", sans-serif';
+  const words = quote.split(' ');
+  let line='', lines=[], maxW=680;
+  words.forEach(w => { const test=line+w+' '; if(ctx.measureText(test).width>maxW&&line){lines.push(line.trim());line=w+' ';}else line=test; });
+  lines.push(line.trim());
+  lines.forEach((l,i) => ctx.fillText(l, 60, 160+i*38));
+
+  // Footer
+  ctx.fillStyle = 'rgba(0,255,247,0.7)';
+  ctx.font = '13px "JetBrains Mono", monospace';
+  ctx.fillText('AI ODYSSEY · INIT 6.0', 60, 390);
+
+  // Download
+  const a = document.createElement('a');
+  a.download = 'ai-odyssey-quote.png';
+  a.href = canvas.toDataURL('image/png');
+  a.click();
+
+  const toast = document.getElementById('share-toast');
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2800);
+}
+window.shareQuote = shareQuote;
+
+/* ============================================================
+   Konami Code
+============================================================ */
+const konamiSeq = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+let konamiIdx = 0;
+document.addEventListener('keydown', e => {
+  if(e.key === konamiSeq[konamiIdx]) {
+    konamiIdx++;
+    if(konamiIdx === konamiSeq.length) { konamiIdx=0; triggerEasterEgg(); }
+  } else { konamiIdx=0; }
+});
+
+// AI (not in input)
+let aiTyped = '';
+document.addEventListener('keypress', e => {
+  if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA') return;
+  aiTyped += e.key.toUpperCase();
+  if(aiTyped.includes('AI')) { aiTyped=''; triggerEasterEgg(); }
+  if(aiTyped.length>5) aiTyped='';
+});
+
+function triggerEasterEgg() {
+  const ov = document.getElementById('easter-egg-overlay');
+  const mc = document.getElementById('matrix-canvas');
+  ov.classList.add('show');
+  document.body.style.overflow='hidden';
+
+  // Matrix rain
+  mc.width = window.innerWidth; mc.height = window.innerHeight;
+  const ctx = mc.getContext('2d');
+  const cols = Math.floor(mc.width/16);
+  const drops = Array(cols).fill(1);
+  const chars = 'アイウエオカキクケコサシスセソ01ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234AI';
+  let mRaf;
+  function drawMatrix() {
+    ctx.fillStyle='rgba(2,4,8,0.08)'; ctx.fillRect(0,0,mc.width,mc.height);
+    ctx.fillStyle='#2ed573'; ctx.font='14px monospace';
+    drops.forEach((y,i)=>{
+      ctx.fillText(chars[Math.floor(Math.random()*chars.length)],i*16,y*16);
+      if(y*16>mc.height&&Math.random()>0.975) drops[i]=0;
+      drops[i]++;
+    });
+    mRaf=requestAnimationFrame(drawMatrix);
+  }
+  drawMatrix();
+  ov._stopMatrix = ()=>cancelAnimationFrame(mRaf);
+  setTimeout(()=>closeEasterEgg(), 8000);
+}
+
+function closeEasterEgg() {
+  const ov = document.getElementById('easter-egg-overlay');
+  ov.classList.remove('show');
+  document.body.style.overflow='';
+  if(ov._stopMatrix) ov._stopMatrix();
+  const mc = document.getElementById('matrix-canvas');
+  const ctx = mc.getContext('2d');
+  ctx.clearRect(0,0,mc.width,mc.height);
+}
+window.closeEasterEgg = closeEasterEgg;
+
+/*
+   DEV NOTE MODAL
+ */
+function openDevNote(){document.getElementById('devnote-overlay').classList.add('active');document.body.style.overflow='hidden';}
+function closeDevNote(){document.getElementById('devnote-overlay').classList.remove('active');document.body.style.overflow='';}
+function closeDevNoteOutside(e){if(e.target===document.getElementById('devnote-overlay'))closeDevNote();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeDevNote();closeEasterEgg();}});
+window.openDevNote=openDevNote;window.closeDevNote=closeDevNote;window.closeDevNoteOutside=closeDevNoteOutside;
+
+
+/* ============================================================
+   GLITCH DECODE
+============================================================ */
+const glitchChars = '!<>-_\\/[]{}—=+*^?#@$%&ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+function glitchDecode(el, originalText, duration) {
+  let frame = 0;
+  const totalFrames = Math.ceil(duration / 16);
+  // Keep spaces and punctuation revealed from start
+  const revealOrder = [...originalText].map((_,i) => i)
+    .filter(i => originalText[i] !== ' ')
+    .sort(() => Math.random() - 0.5);
+
+  const iv = setInterval(() => {
+    frame++;
+    const progress = frame / totalFrames;
+    const revealedCount = Math.floor(progress * revealOrder.length);
+    const revealed = new Set(revealOrder.slice(0, revealedCount));
+
+    let result = '';
+    for(let i = 0; i < originalText.length; i++) {
+      if(originalText[i] === ' ') { result += ' '; }
+      else if(revealed.has(i)) { result += originalText[i]; }
+      else if(frame % 2 === 0) { result += glitchChars[Math.floor(Math.random() * glitchChars.length)]; }
+      else { result += glitchChars[Math.floor(Math.random() * glitchChars.length)]; }
+    }
+    el.textContent = result;
+
+    if(frame >= totalFrames) {
+      clearInterval(iv);
+      el.textContent = originalText;
+      el.classList.remove('decoding');
+    }
+  }, 16);
+}
+
+// Apply glitch decode to section titles when they enter viewport
+function initGlitchObserver() {
+  const targets = document.querySelectorAll('.section-title, .tl-card h3, .fcard h3, .icard h3');
+  const gObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting && !e.target._glitched) {
+        e.target._glitched = true;
+        const orig = e.target.textContent;
+        e.target.classList.add('glitch-text', 'decoding');
+        // Small delay so user notices the effect
+        setTimeout(() => glitchDecode(e.target, orig, 400), 120);
+        gObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  targets.forEach(t => gObs.observe(t));
+}
+initGlitchObserver();
+
+/* ============================================================
+   SECTION TRANSITION GLITCH SCANLINE
+============================================================ */
+let lastSection = '';
+const scanline = document.getElementById('section-scanline');
+
+const sectionObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting && e.target.id && e.target.id !== lastSection) {
+      lastSection = e.target.id;
+      // Flash scanline briefly
+      scanline.classList.add('flash');
+      setTimeout(() => scanline.classList.remove('flash'), 180);
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('section[id]').forEach(s => sectionObs.observe(s));
+
+/* ============================================================
+   YOU vs GPT-4
+============================================================ */
+let yvgStart_time = null;
+let yvgInterval = null;
+let yvgRunning = false;
+
+function yvgStart() {
+  if(yvgRunning) return;
+  yvgRunning = true;
+  yvgStart_time = Date.now();
+  document.getElementById('yvg-start').style.display = 'none';
+  document.getElementById('yvg-done').classList.add('show');
+  // Highlight the passage
+  document.getElementById('yvg-text').style.background = 'rgba(0,168,255,0.04)';
+  document.getElementById('yvg-text').style.padding = '4px';
+  document.getElementById('yvg-text').style.borderRadius = '3px';
+
+  yvgInterval = setInterval(() => {
+    const elapsed = (Date.now() - yvgStart_time) / 1000;
+    document.getElementById('yvg-timer').textContent = elapsed.toFixed(1) + 's';
+  }, 100);
+}
+
+function yvgDone() {
+  if(!yvgRunning) return;
+  yvgRunning = false;
+  clearInterval(yvgInterval);
+  const elapsed = (Date.now() - yvgStart_time) / 1000;
+  document.getElementById('yvg-timer').textContent = elapsed.toFixed(1) + 's';
+  document.getElementById('yvg-done').classList.remove('show');
+
+  // Calculate WPM
+  const wordCount = document.getElementById('yvg-text').textContent.split(/\s+/).length;
+  const wpm = Math.round((wordCount / elapsed) * 60);
+  const gpt4Ms = 4; // GPT-4 processes ~250 tokens in ~4ms for this passage
+
+  document.getElementById('yvg-your-time').textContent = elapsed.toFixed(1) + 's';
+
+  // Generate insight
+  const ratio = Math.round(elapsed / (gpt4Ms / 1000));
+  let insight = '';
+  if(elapsed < 15) insight = `Impressive speed! You read at ~${wpm} WPM — but GPT‑4 still processed the same text <strong>${ratio}× faster</strong>. It's not reading for understanding; it tokenizes everything in parallel at hardware speed.`;
+  else if(elapsed < 30) insight = `A solid reading pace at ~${wpm} WPM. GPT‑4 processed this passage <strong>${ratio}× faster</strong> — not because it's "smarter," but because it converts text to tokens and runs matrix math, not comprehension.`;
+  else insight = `You took your time — and probably understood it deeply (~${wpm} WPM). GPT‑4 processed it <strong>${ratio}× faster</strong>, but "processing" isn't reading. The difference is speed vs. meaning.`;
+
+  document.getElementById('yvg-insight-text').innerHTML = insight;
+  document.getElementById('yvg-results').classList.add('show');
+  document.getElementById('yvg-text').style.background = '';
+  document.getElementById('yvg-text').style.padding = '';
+}
+
+function yvgReset() {
+  yvgRunning = false;
+  clearInterval(yvgInterval);
+  document.getElementById('yvg-timer').textContent = '0.0s';
+  document.getElementById('yvg-start').style.display = '';
+  document.getElementById('yvg-done').classList.remove('show');
+  document.getElementById('yvg-results').classList.remove('show');
+  document.getElementById('yvg-text').style.background = '';
+  document.getElementById('yvg-text').style.padding = '';
+  yvgStart_time = null;
+}
+window.yvgStart = yvgStart;
+window.yvgDone = yvgDone;
+window.yvgReset = yvgReset;
+
+/* ============================================================
+   PREDICT THE FUTURE
+============================================================ */
+// Simulate distributed visitor predictions (seeded for consistency)
+function getPredictions() {
+  const stored = JSON.parse(localStorage.getItem('ptf_predictions') || '{}');
+  // Seed baseline data that feels realistic
+  const baseline = {
+    2026:8, 2027:12, 2028:24, 2029:18, 2030:42, 2031:28,
+    2032:19, 2033:15, 2034:22, 2035:38, 2036:14, 2037:11,
+    2038:9,  2039:8,  2040:26, 2042:12, 2045:18, 2050:22,
+    2060:8,  2075:5
+  };
+  return { ...baseline, ...stored };
+}
+
+function ptfUpdate(val) {
+  document.getElementById('ptf-year-val').textContent = val >= 2075 ? '2075+' : val;
+}
+
+function ptfSubmit() {
+  const slider = document.getElementById('ptf-slider');
+  const year = parseInt(slider.value);
+  const displayYear = year >= 2075 ? '2075+' : year;
+
+  // Save to localStorage
+  const stored = JSON.parse(localStorage.getItem('ptf_predictions') || '{}');
+  stored[year] = (stored[year] || 0) + 1;
+  localStorage.setItem('ptf_predictions', JSON.stringify(stored));
+
+  // Show user dot on timeline
+  const dot = document.getElementById('ptf-user-dot');
+  const pct = Math.min((year - 2025) / (2075 - 2025), 1);
+  const trackWidth = document.getElementById('ptf-timeline').offsetWidth - 96;
+  dot.style.left = `calc(48px + ${pct * trackWidth}px)`;
+  dot.style.display = 'block';
+  document.getElementById('ptf-dot-label').textContent = displayYear;
+
+  // Calculate agreement %
+  const allPreds = getPredictions();
+  const total = Object.values(allPreds).reduce((a,b) => a+b, 0);
+  // "Agreement" = predictions within ±3 years
+  let nearby = 0;
+  for(let y = year - 3; y <= year + 3; y++) { nearby += (allPreds[y] || 0); }
+  const agreePct = Math.round((nearby / total) * 100);
+
+  // Build result text
+  const expertMap = {
+    2025:'Earlier than almost anyone — more optimistic than Elon Musk.',
+    2026:'Very close to Elon Musk\'s ~2026 estimate.',
+    2027:'Between Musk and Altman — firmly in the optimist camp.',
+    2028:'Aligns with Sam Altman\'s informal prediction.',
+    2030:'A popular estimate — AGI "within this decade" sentiment.',
+    2035:'Near Geoffrey Hinton\'s estimate and the median AI researcher view.',
+    2040:'More cautious — you expect a longer timeline than most researchers.',
+    2050:'Very cautious. Aligns with skeptics who cite unsolved alignment problems.',
+  };
+  let msg = expertMap[year] || (year < 2030 ? 'An optimistic prediction — sooner than most expert estimates.' : year < 2040 ? 'A moderate timeline, near the researcher consensus.' : 'A cautious long-term view.');
+
+  document.getElementById('ptf-result-text').innerHTML = `You predict AGI by <strong>${displayYear}</strong>. ${msg}`;
+
+  const result = document.getElementById('ptf-result');
+  result.classList.add('show');
+
+  // Animate bar
+  setTimeout(() => {
+    document.getElementById('ptf-agree-fill').style.width = agreePct + '%';
+    document.getElementById('ptf-pct-label').textContent = agreePct + '% of visitors predicted similarly';
+  }, 300);
+}
+
+window.ptfUpdate = ptfUpdate;
+window.ptfSubmit = ptfSubmit;
+
+/* ============================================================
+   TURING TEST GAME
+============================================================ */
+const TG_ROUNDS = [
+  {
+    prompt: "If you could have dinner with anyone in history, who would it be and why?",
+    ai: "Nikola Tesla — a visionary who died broke while his ideas powered civilization. I'd want to understand what he saw in alternating current before anyone else did, and how it felt to be that far ahead of the world.",
+    human: "Honestly? My grandmother. She passed before I really knew her, and I think about all the stories I never got to hear. History's full of geniuses, but I only get one grandmother.",
+    aiIsA: false // human is A, AI is B
+  },
+  {
+    prompt: "What does it feel like to be truly alone?",
+    ai: "There's a particular silence to real loneliness — not the absence of sound, but the absence of being witnessed. Like speaking into a room and realizing no sound ever came out. It's the strange sensation of being invisible while still taking up space.",
+    human: "Like standing in a crowded subway car and realizing no one sees you. Not scary exactly, just... weirdly light. Almost peaceful and awful at the same time.",
+    aiIsA: true // AI is A, human is B
+  },
+  {
+    prompt: "What is one thing modern society gets completely wrong?",
+    ai: "We've conflated productivity with worth. Not just economically — we genuinely struggle to justify our existence during idle moments. Rest has become a commodity you earn rather than a state of being. It's why people say they're 'recovering' from a vacation.",
+    human: "Phones at the dinner table. I know it sounds small but I think we've basically decided that the person in front of us is less interesting than whoever might text us next. That's a really sad thing to normalize.",
+    aiIsA: true // AI is A
+  },
+  {
+    prompt: "Describe a perfect Saturday morning.",
+    ai: "Rain on the window, coffee still hot, no notifications. A book I've been meaning to start — something with long sentences that rewards slow reading. Maybe a walk later, maybe not. The beauty is in having decided nothing yet.",
+    human: "Sleeping in until 9, then making eggs with way too much butter and eating them standing over the sink because the table is too far. Zero notifications. Back to sleep by 11 if possible.",
+    aiIsA: true // AI is A
+  }
+];
+
+let tgCurrent = 0, tgScore = 0, tgHistory = [];
+
+function tgInit() {
+  tgCurrent = 0; tgScore = 0; tgHistory = [];
+  document.getElementById('tg-final').classList.remove('show');
+  tgLoadRound();
+}
+
+function tgLoadRound() {
+  const r = TG_ROUNDS[tgCurrent];
+  document.getElementById('tg-round-num').textContent = tgCurrent + 1;
+  document.getElementById('tg-score-display').textContent = tgScore;
+  document.getElementById('tg-result').classList.remove('show');
+
+  // Randomize which side shows AI vs Human per round (aiIsA flag)
+  const msgs = document.getElementById('tg-messages');
+  msgs.innerHTML = `
+    <div class="tg-msg">
+      <div class="tg-msg-avatar a"><i class="fa-solid fa-user-astronaut"></i></div>
+      <div class="tg-msg-bubble">
+        <div class="tg-msg-label">Interviewer</div>
+        <div class="tg-msg-text">${r.prompt}</div>
+      </div>
+    </div>`;
+
+  const respondentA = r.aiIsA ? r.ai : r.human;
+  const respondentB = r.aiIsA ? r.human : r.ai;
+
+  document.getElementById('tg-a-preview').textContent = respondentA.slice(0, 55) + '...';
+  document.getElementById('tg-b-preview').textContent = respondentB.slice(0, 55) + '...';
+
+  // Store full texts on buttons
+  document.getElementById('tg-btn-a').dataset.full = respondentA;
+  document.getElementById('tg-btn-b').dataset.full = respondentB;
+  document.getElementById('tg-btn-a').className = 'tg-choice-btn';
+  document.getElementById('tg-btn-b').className = 'tg-choice-btn';
+  document.getElementById('tg-next-btn').textContent = tgCurrent < TG_ROUNDS.length - 1 ? '→ Next Round' : '→ See Final Score';
+
+  // Build pips
+  let pips = '';
+  for(let i = 0; i < TG_ROUNDS.length; i++) {
+    if(tgHistory[i] === true) pips += '<div class="tg-score-pip hit"></div>';
+    else if(tgHistory[i] === false) pips += '<div class="tg-score-pip miss"></div>';
+    else pips += '<div class="tg-score-pip"></div>';
+  }
+  document.getElementById('tg-pips').innerHTML = pips;
+}
+
+function tgGuess(choice) {
+  const r = TG_ROUNDS[tgCurrent];
+  // AI is correct answer — user guesses which is AI
+  const correctChoice = r.aiIsA ? 'A' : 'B';
+  const correct = choice === correctChoice;
+
+  if(correct) tgScore++;
+  tgHistory[tgCurrent] = correct;
+
+  // Highlight buttons
+  document.getElementById('tg-btn-a').className = 'tg-choice-btn ' + (r.aiIsA ? 'correct' : 'wrong');
+  document.getElementById('tg-btn-b').className = 'tg-choice-btn ' + (!r.aiIsA ? 'correct' : 'wrong');
+  document.getElementById('tg-btn-a').onclick = null;
+  document.getElementById('tg-btn-b').onclick = null;
+
+  // Reveal
+  const icon = document.getElementById('tg-result-icon');
+  const body = document.getElementById('tg-result-body');
+  const aiText = r.ai;
+  const humanText = r.human;
+
+  icon.className = 'tg-result-icon ' + (correct ? 'win' : 'lose');
+  icon.innerHTML = correct ? '<i class="fa-solid fa-check"></i>' : '<i class="fa-solid fa-xmark"></i>';
+
+  body.innerHTML = correct
+    ? `<strong>You spotted the AI!</strong> The writing was technically polished but lacked the personal specificity of lived experience. The human's response had raw, unfiltered detail that AI tends to smooth away.`
+    : `<strong>The AI fooled you.</strong> Modern language models are trained on billions of human-written examples — making their responses feel deeply authentic. The tell? AI often leans toward abstract metaphor; humans reach for concrete, personal detail.`;
+
+  body.innerHTML += `<br><br><span style="color:var(--text-muted);font-size:0.8rem">The AI wrote: <em>"${aiText.slice(0,80)}..."</em></span>`;
+
+  let pips = '';
+  for(let i = 0; i < TG_ROUNDS.length; i++) {
+    if(tgHistory[i] === true) pips += '<div class="tg-score-pip hit"></div>';
+    else if(tgHistory[i] === false) pips += '<div class="tg-score-pip miss"></div>';
+    else pips += '<div class="tg-score-pip"></div>';
+  }
+  document.getElementById('tg-pips').innerHTML = pips;
+  document.getElementById('tg-score-display').textContent = tgScore;
+  document.getElementById('tg-result').classList.add('show');
+}
+
+function tgNext() {
+  tgCurrent++;
+  if(tgCurrent >= TG_ROUNDS.length) {
+    tgShowFinal();
+  } else {
+    document.getElementById('tg-btn-a').onclick = () => tgGuess('A');
+    document.getElementById('tg-btn-b').onclick = () => tgGuess('B');
+    tgLoadRound();
+  }
+}
+
+function tgShowFinal() {
+  document.getElementById('tg-convo').style.display = 'none';
+  document.querySelector('.tg-prompt-box').style.display = 'none';
+  document.getElementById('tg-choices').style.display = 'none';
+  document.getElementById('tg-result').classList.remove('show');
+  document.getElementById('tg-round-badge').style.display = 'none';
+
+  document.getElementById('tg-final-score').textContent = `${tgScore}/4`;
+  const msgs = [
+    "You might be an AI yourself. 🤖 Perfect score — you read the subtle cues that separate human imperfection from AI polish.",
+    "Impressive! You've got a sharp eye for the tell-tale signs of AI writing. 3/4 is better than most.",
+    "Half and half — not bad! Modern AI is genuinely hard to distinguish. The lines are blurring.",
+    "The machines got you this time. Don't worry — even researchers struggle with this test."
+  ];
+  document.getElementById('tg-final-msg').textContent = msgs[Math.max(0, 4 - tgScore)];
+  document.getElementById('tg-final').classList.add('show');
+}
+
+function tgRestart() {
+  document.getElementById('tg-convo').style.display = '';
+  document.querySelector('.tg-prompt-box').style.display = '';
+  document.getElementById('tg-choices').style.display = '';
+  document.getElementById('tg-round-badge').style.display = '';
+  document.getElementById('tg-final').classList.remove('show');
+  tgInit();
+}
+tgInit();
+
+
+
+/* ============================================================
+   arcade qz and score caard gene
+============================================================ */
+const AQ_DATA = [
+  {q:"Who coined the term 'Artificial Intelligence'?", opts:["Alan Turing","John McCarthy","Claude Shannon","Marvin Minsky"], ans:1, cat:"History", fb:"John McCarthy coined the term at the 1956 Dartmouth Conference."},
+  {q:"What does 'GPT' stand for?", opts:["General Purpose Technology","Generative Pre-trained Transformer","Guided Prediction Tool","Graph Processing Tensor"], ans:1, cat:"Models", fb:"GPT = Generative Pre-trained Transformer — the architecture behind ChatGPT."},
+  {q:"Which company created AlphaFold?", opts:["OpenAI","Meta AI","DeepMind","Anthropic"], ans:2, cat:"Science", fb:"DeepMind (Google) created AlphaFold, solving protein structure prediction after 50 years."},
+  {q:"How fast did ChatGPT reach 100M users?", opts:["6 months","3 months","2 months","1 month"], ans:2, cat:"History", fb:"2 months — the fastest technology adoption in history at the time."},
+  {q:"What architecture powers all modern LLMs?", opts:["LSTM","CNN","Transformer","GAN"], ans:2, cat:"Architecture", fb:"The Transformer ('Attention is All You Need', 2017) powers all modern LLMs."},
+  {q:"What is RLHF?", opts:["Real-time Learning from Human Feedback","Reinforcement Learning from Human Feedback","Recursive Learning with Hybrid Functions","Random Learning via Human Flags"], ans:1, cat:"Training", fb:"RLHF = Reinforcement Learning from Human Feedback — key to making LLMs helpful."},
+  {q:"Deep Blue famously defeated which world champion in 1997?", opts:["Bobby Fischer","Garry Kasparov","Magnus Carlsen","Viswanathan Anand"], ans:1, cat:"History", fb:"IBM's Deep Blue beat Garry Kasparov at chess in 1997 — a defining moment in AI history."},
+  {q:"What does 'hallucination' mean in AI?", opts:["AI becomes self-aware","AI generates confident but false info","AI refuses to answer","AI has visual glitches"], ans:1, cat:"Concepts", fb:"Hallucination = when AI confidently generates plausible-sounding but factually wrong information."},
+  {q:"Which organization published the 'Attention is All You Need' paper?", opts:["OpenAI","Facebook AI","Google Brain","MIT"], ans:2, cat:"Architecture", fb:"Google Brain published the seminal Transformer paper in 2017."},
+  {q:"What % of global jobs does the IMF estimate are exposed to AI?", opts:["10%","25%","40%","60%"], ans:2, cat:"Society", fb:"The IMF estimates ~40% of jobs are exposed to AI — though 'exposed' doesn't mean eliminated."},
+];
+
+let aqState = {qIdx:0,score:0,streak:0,bestStreak:0,correct:0,timer:null,timeLeft:15,answered:false};
+const AQ_TOTAL_TIME = 15;
+const CIRCUMFERENCE = 2 * Math.PI * 22;
+let aqAudioCtx = null;
+
+function getAudioCtx() {
+  if(!aqAudioCtx) aqAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  return aqAudioCtx;
+}
+function playTone(freq, dur, type='sine', vol=0.28) {
+  try {
+    const ctx = getAudioCtx();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain); gain.connect(ctx.destination);
+    osc.frequency.value = freq; osc.type = type;
+    gain.gain.setValueAtTime(vol, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + dur);
+    osc.start(); osc.stop(ctx.currentTime + dur);
+  } catch(e) {}
+}
+function soundCorrect(){playTone(523,0.1);setTimeout(()=>playTone(659,0.1),100);setTimeout(()=>playTone(784,0.18),200)}
+function soundWrong(){playTone(220,0.15,'sawtooth',0.18);setTimeout(()=>playTone(180,0.25,'sawtooth',0.13),100)}
+function soundTimeout(){playTone(300,0.3,'triangle',0.18)}
+function soundStreak(){[523,659,784,1047].forEach((f,i)=>setTimeout(()=>playTone(f,0.1),i*80))}
+function soundStart(){[440,550,660].forEach((f,i)=>setTimeout(()=>playTone(f,0.12),i*100))}
+
+function aqStart() {
+  document.getElementById('aq-intro').style.display='none';
+  document.getElementById('aq-game').classList.add('active');
+  document.getElementById('aq-result').classList.remove('active');
+  aqState={qIdx:0,score:0,streak:0,bestStreak:0,correct:0,timer:null,timeLeft:AQ_TOTAL_TIME,answered:false};
+  soundStart();
+  aqLoadQ();
+}
+
+function aqLoadQ() {
+  const q=AQ_DATA[aqState.qIdx];
+  aqState.answered=false; aqState.timeLeft=AQ_TOTAL_TIME;
+  document.getElementById('aq-qnum').textContent=`Q ${aqState.qIdx+1}/${AQ_DATA.length}`;
+  document.getElementById('aq-category').textContent=q.cat;
+  document.getElementById('aq-qtext').textContent=q.q;
+  document.getElementById('aq-progress').style.width=(aqState.qIdx/AQ_DATA.length*100)+'%';
+  document.getElementById('aq-fb').textContent='';
+  document.getElementById('aq-fb').className='aq-fb';
+  const keys=['A','B','C','D'];
+  document.getElementById('aq-options').innerHTML=q.opts.map((o,i)=>`
+    <button class="aq-opt" onclick="aqAnswer(${i})" id="aq-opt-${i}">
+      <span class="aq-opt-key">${keys[i]}</span><span>${o}</span>
+    </button>`).join('');
+  aqUpdateTimer(); aqStartTimer(); aqUpdateHUD();
+}
+
+function aqStartTimer() {
+  if(aqState.timer) clearInterval(aqState.timer);
+  aqState.timer=setInterval(()=>{
+    aqState.timeLeft-=0.1; aqUpdateTimer();
+    if(aqState.timeLeft<=0){clearInterval(aqState.timer);if(!aqState.answered)aqTimeout();}
+  },100);
+}
+
+function aqUpdateTimer() {
+  const t=Math.max(0,aqState.timeLeft);
+  const offset=CIRCUMFERENCE*(1-t/AQ_TOTAL_TIME);
+  const circle=document.getElementById('aq-timer-circle');
+  const numEl=document.getElementById('aq-timer-num');
+  if(circle){circle.style.strokeDashoffset=offset;circle.style.stroke=t<5?'var(--red)':t<10?'var(--gold)':'var(--cyan)';}
+  if(numEl){numEl.textContent=Math.ceil(t);numEl.style.color=t<5?'var(--red)':t<10?'var(--gold)':'var(--cyan)';}
+}
+
+function aqAnswer(idx) {
+  if(aqState.answered)return;
+  aqState.answered=true;
+  clearInterval(aqState.timer);
+  const q=AQ_DATA[aqState.qIdx];
+  const correct=idx===q.ans;
+  document.querySelectorAll('.aq-opt').forEach(o=>o.disabled=true);
+  document.getElementById(`aq-opt-${q.ans}`).classList.add('correct');
+  if(!correct)document.getElementById(`aq-opt-${idx}`).classList.add('wrong');
+  if(correct){
+    aqState.correct++; aqState.streak++;
+    if(aqState.streak>aqState.bestStreak)aqState.bestStreak=aqState.streak;
+    const bonus=aqState.streak>=3?20:aqState.streak>=2?10:0;
+    const timeBonus=Math.floor(aqState.timeLeft)*2;
+    aqState.score+=100+bonus+timeBonus;
+    soundCorrect();
+    if(aqState.streak>=3)setTimeout(soundStreak,220);
+    const fbEl=document.getElementById('aq-fb');
+    fbEl.className='aq-fb correct';
+    fbEl.textContent=`✓ Correct!${bonus>0?` +${bonus} streak bonus`:''}${timeBonus>0?` +${timeBonus} speed bonus`:''} — ${q.fb}`;
+  } else {
+    aqState.streak=0; soundWrong();
+    const fbEl=document.getElementById('aq-fb');
+    fbEl.className='aq-fb wrong';
+    fbEl.textContent=`✗ ${q.fb}`;
+    const g=document.getElementById('aq-game');
+    g.classList.add('shake'); setTimeout(()=>g.classList.remove('shake'),350);
+  }
+  aqUpdateHUD();
+  setTimeout(()=>{aqState.qIdx++;if(aqState.qIdx>=AQ_DATA.length)aqFinish();else aqLoadQ();},1900);
+}
+
+function aqTimeout() {
+  aqState.answered=true; aqState.streak=0;
+  const q=AQ_DATA[aqState.qIdx];
+  document.querySelectorAll('.aq-opt').forEach(o=>o.disabled=true);
+  document.getElementById(`aq-opt-${q.ans}`).classList.add('correct');
+  soundTimeout();
+  const fbEl=document.getElementById('aq-fb');
+  fbEl.className='aq-fb timeout';
+  fbEl.textContent=`⏱ Time's up! ${q.fb}`;
+  aqUpdateHUD();
+  setTimeout(()=>{aqState.qIdx++;if(aqState.qIdx>=AQ_DATA.length)aqFinish();else aqLoadQ();},1900);
+}
+
+function aqUpdateHUD() {
+  document.getElementById('aq-score-num').textContent=aqState.score;
+  const sb=document.getElementById('aq-streak-badge');
+  if(aqState.streak>=5){sb.className='aq-streak fire';sb.textContent=`🔥 ON FIRE x${aqState.streak}`;}
+  else if(aqState.streak>=3){sb.className='aq-streak hot';sb.textContent=`🔥 Streak: ${aqState.streak}`;}
+  else{sb.className='aq-streak';sb.textContent=`🔥 Streak: ${aqState.streak}`;}
+}
+
+function aqFinish() {
+  clearInterval(aqState.timer);
+  document.getElementById('aq-game').classList.remove('active');
+  const result=document.getElementById('aq-result');
+  result.classList.add('active');
+  document.getElementById('score-share-preview').classList.remove('show');
+  document.getElementById('aq-final-score').textContent=aqState.score;
+  document.getElementById('aq-stat-correct').textContent=`${aqState.correct}/${AQ_DATA.length}`;
+  document.getElementById('aq-stat-streak').textContent=aqState.bestStreak+'x';
+  document.getElementById('aq-stat-acc').textContent=Math.round(aqState.correct/AQ_DATA.length*100)+'%';
+  const pct=aqState.correct/AQ_DATA.length;
+  const msgs=["Legendary! You're an AI genius. The machines fear you. 🤖👑","Outstanding! You clearly know your AI history inside out.","Great performance! A few more sessions and you'll be unstoppable.","Not bad — but there's more to learn. The odyssey continues.","Keep exploring! Every question is a step deeper into the journey."];
+  document.getElementById('aq-result-msg').textContent=msgs[pct>=0.9?0:pct>=0.7?1:pct>=0.5?2:pct>=0.3?3:4];
+  setTimeout(()=>[523,659,784,1047,1319].forEach((f,i)=>setTimeout(()=>playTone(f,0.15),i*100)),300);
+}
+
+function aqRestart() {
+  document.getElementById('aq-result').classList.remove('active');
+  document.getElementById('aq-game').classList.add('active');
+  aqState={qIdx:0,score:0,streak:0,bestStreak:0,correct:0,timer:null,timeLeft:AQ_TOTAL_TIME,answered:false};
+  soundStart(); aqLoadQ();
+}
+
+let _aqCard = null;
+function aqGenerateCard() {
+  const canvas=document.getElementById('score-share-canvas');
+  canvas.width=800; canvas.height=420;
+  const ctx=canvas.getContext('2d');
+  const grd=ctx.createLinearGradient(0,0,800,420);
+  grd.addColorStop(0,'#020408'); grd.addColorStop(0.5,'#0a1628'); grd.addColorStop(1,'#050c14');
+  ctx.fillStyle=grd; ctx.fillRect(0,0,800,420);
+  // Grid
+  ctx.strokeStyle='rgba(0,168,255,0.04)'; ctx.lineWidth=1;
+  for(let x=0;x<800;x+=40){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,420);ctx.stroke()}
+  for(let y=0;y<420;y+=40){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(800,y);ctx.stroke()}
+  // Top bar
+  const tl=ctx.createLinearGradient(0,0,800,0);
+  tl.addColorStop(0,'#7b2fff');tl.addColorStop(0.5,'#ff4757');tl.addColorStop(1,'#00fff7');
+  ctx.fillStyle=tl; ctx.fillRect(0,0,800,4);
+  // Badge
+  ctx.fillStyle='rgba(255,71,87,0.18)'; ctx.fillRect(40,26,140,30);
+  ctx.fillStyle='#ff4757'; ctx.font='bold 13px monospace'; ctx.fillText('⚡ ARCADE MODE',52,46);
+  // Site label
+  ctx.fillStyle='rgba(0,255,247,0.55)'; ctx.font='11px monospace'; ctx.fillText('AI ODYSSEY · INIT 6.0',40,96);
+  // Score
+  ctx.save();
+  const sg=ctx.createLinearGradient(0,110,0,240);
+  sg.addColorStop(0,'#00fff7'); sg.addColorStop(1,'#7b2fff');
+  ctx.fillStyle=sg; ctx.font='bold 95px monospace';
+  ctx.shadowBlur=40; ctx.shadowColor='rgba(0,255,247,0.45)';
+  ctx.fillText(aqState.score,40,220); ctx.restore();
+  ctx.fillStyle='rgba(122,154,184,0.65)'; ctx.font='13px monospace'; ctx.fillText('POINTS',40,246);
+  // Stats
+  [{label:'CORRECT',val:`${aqState.correct}/${AQ_DATA.length}`},{label:'BEST STREAK',val:aqState.bestStreak+'x'},{label:'ACCURACY',val:Math.round(aqState.correct/AQ_DATA.length*100)+'%'}]
+    .forEach((s,i)=>{
+      const x=40+i*155;
+      ctx.fillStyle='rgba(255,255,255,0.04)'; ctx.fillRect(x,278,140,78);
+      ctx.strokeStyle='rgba(0,168,255,0.18)'; ctx.lineWidth=1; ctx.strokeRect(x,278,140,78);
+      ctx.fillStyle='#00fff7'; ctx.font='bold 24px monospace'; ctx.fillText(s.val,x+12,318);
+      ctx.fillStyle='rgba(122,154,184,0.65)'; ctx.font='10px monospace'; ctx.fillText(s.label,x+12,340);
+    });
+  // Circle decoration
+  ctx.save();
+  ctx.fillStyle='rgba(123,47,255,0.07)'; ctx.beginPath(); ctx.arc(660,210,155,0,Math.PI*2); ctx.fill();
+  ctx.strokeStyle='rgba(123,47,255,0.14)'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.arc(660,210,155,0,Math.PI*2); ctx.stroke();
+  ctx.beginPath(); ctx.arc(660,210,115,0,Math.PI*2); ctx.stroke();
+  ctx.font='bold 72px monospace'; ctx.fillStyle='rgba(255,71,87,0.55)';
+  ctx.shadowBlur=28; ctx.shadowColor='rgba(255,71,87,0.35)';
+  ctx.textAlign='center'; ctx.fillText('⚡',660,238); ctx.restore();
+  // Badge text
+  const pct=aqState.correct/AQ_DATA.length;
+  ctx.fillStyle='rgba(255,209,102,0.75)'; ctx.font='12px monospace'; ctx.textAlign='left';
+  ctx.fillText(pct>=0.9?'🏆 LEGENDARY':pct>=0.7?'⭐ EXCELLENT':pct>=0.5?'✅ GOOD TRY':'📚 KEEP LEARNING',530,378);
+  // Border
+  ctx.strokeStyle='rgba(0,168,255,0.18)'; ctx.lineWidth=1; ctx.strokeRect(1,1,798,418);
+  _aqCard=canvas;
+  document.getElementById('score-share-preview').classList.add('show');
+}
+
+function aqDownloadCard(){
+  if(!_aqCard){aqGenerateCard();return;}
+  const a=document.createElement('a'); a.download='ai-odyssey-score.png'; a.href=_aqCard.toDataURL('image/png'); a.click();
+}
+async function aqCopyCard(){
+  if(!_aqCard){aqGenerateCard();return;}
+  try{
+    _aqCard.toBlob(async blob=>{
+      await navigator.clipboard.write([new ClipboardItem({'image/png':blob})]);
+      const btn=document.querySelector('.score-copy-btn');
+      const o=btn.innerHTML; btn.innerHTML='<i class="fa-solid fa-check"></i> Copied!';
+      setTimeout(()=>btn.innerHTML=o,2000);
+    });
+  }catch(e){aqDownloadCard();}
+}
+window.aqStart=aqStart; window.aqAnswer=aqAnswer; window.aqRestart=aqRestart;
+window.aqGenerateCard=aqGenerateCard; window.aqDownloadCard=aqDownloadCard; window.aqCopyCard=aqCopyCard;
+
 </script>
 </body>
 </html>
